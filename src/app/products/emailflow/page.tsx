@@ -45,19 +45,19 @@ export default function EmailFlowPage() {
         }}
       />
 
-      <section className="bg-white py-14 md:py-16">
-        <div className="shell grid gap-10 border-b border-slate-200 pb-12 lg:grid-cols-[0.86fr_1.14fr]">
+      <section className="bg-black text-white py-14 md:py-16">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">Product / EmailFlow</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl">
+            <p className="text-sm font-semibold text-[#7b80ff]">Product / EmailFlow</p>
+            <h1 className="page-title">
               Email becomes a work system.
             </h1>
           </div>
           <div>
-            <p className="max-w-2xl text-base leading-8 text-slate-600">
+            <p className="max-w-2xl text-base leading-8 text-white/68">
               EmailFlow classifies incoming messages, extracts reviewable tasks, and keeps project context attached. It is designed around user review rather than invisible automation.
             </p>
-            <Link href="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
+            <Link href="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">
               Request access
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -65,7 +65,7 @@ export default function EmailFlowPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-16 md:pb-24">
+      <section className="bg-black text-white pb-16 md:pb-24">
         <div className="shell">
           <EmailFlowDashboardPreview />
         </div>
@@ -76,7 +76,7 @@ export default function EmailFlowPage() {
           <h2 className="text-3xl font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl">
             What the product does.
           </h2>
-          <div className="border-t border-slate-200">
+          <div className="">
             {productPoints.map(([title, copy]) => (
               <div key={title} className="grid gap-4 border-b border-slate-200 py-6 md:grid-cols-[14rem_1fr]">
                 <p className="text-sm font-semibold text-slate-950">{title}</p>
@@ -87,7 +87,7 @@ export default function EmailFlowPage() {
         </div>
       </section>
 
-      <section className="editorial-rule bg-slate-950 py-16 text-white md:py-20">
+      <section className="bg-black text-white py-16 md:py-20">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <h2 className="text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
             Product constraints.

@@ -26,26 +26,26 @@ export default function ProductsPage() {
         }}
       />
 
-      <section className="bg-white py-14">
-        <div className="shell grid gap-10 border-b border-slate-200 pb-10 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="bg-black text-white py-14">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">Products</p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl">
+            <p className="text-sm font-semibold text-[#7b80ff]">Products</p>
+            <h1 className="page-title">
               Product directory.
             </h1>
           </div>
-          <p className="max-w-2xl text-base leading-8 text-slate-600">
+          <p className="max-w-2xl text-base leading-8 text-white/68">
             Vaxon currently has one active product. Future products will come from adjacent workflow problems after the first product proof is strong enough to justify them.
           </p>
         </div>
       </section>
 
-      <section className="bg-white pb-16 md:pb-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[0.62fr_1.38fr]">
-          <article className="border-t border-slate-950 pt-5">
+          <article className="pt-0">
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-slate-950">EmailFlow</p>
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">Active product</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#494fdf]">Active product</span>
             </div>
             <p className="mt-5 text-2xl font-semibold leading-tight tracking-[-0.035em] text-slate-950">
               Email threads become classified tasks with source context.
@@ -53,21 +53,10 @@ export default function ProductsPage() {
             <p className="mt-5 text-sm leading-7 text-slate-600">
               EmailFlow is built for people managing multiple projects, inbox-driven decisions, and follow-ups that should not disappear into a thread.
             </p>
-            <div className="mt-7 grid gap-3 border-t border-slate-200 pt-5 text-sm">
-              <p className="flex justify-between gap-4">
-                <span className="text-slate-500">Category</span>
-                <span className="font-semibold text-slate-950">Email intelligence</span>
-              </p>
-              <p className="flex justify-between gap-4">
-                <span className="text-slate-500">Workflow</span>
-                <span className="font-semibold text-slate-950">Inbox to task workspace</span>
-              </p>
-              <p className="flex justify-between gap-4">
-                <span className="text-slate-500">Status</span>
-                <span className="font-semibold text-slate-950">V1 product proof</span>
-              </p>
-            </div>
-            <Link href="/products/emailflow" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
+            <p className="mt-7 max-w-md  pt-5 text-sm font-semibold leading-7 text-slate-950">
+              Active product · Email intelligence · V1 product proof
+            </p>
+            <Link href="/products/emailflow" className="text-[#494fdf] mt-8 inline-flex items-center gap-2 text-sm font-semibold">
               View product detail
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -77,11 +66,11 @@ export default function ProductsPage() {
       </section>
 
       <section className="editorial-rule bg-white py-16">
-        <div className="shell grid gap-8 md:grid-cols-[0.62fr_1.38fr]">
+        <div className="shell grid gap-8 md:grid-cols-[0.86fr_1.14fr]">
           <h2 className="text-2xl font-semibold tracking-[-0.035em] text-slate-950">
             Roadmap
           </h2>
-          <div className="border-t border-slate-200">
+          <div className="">
             {[
               ['Adjacent personal systems', 'Products around context, review, planning, and task execution for people working across many communication channels.'],
               ['Team workflow systems', 'Collaborative AI workflow products where classification, routing, status, and source context stay visible to teams.'],

@@ -43,19 +43,19 @@ export default function WhatWeDoPage() {
         }}
       />
 
-      <section className="bg-white py-14 md:py-16">
-        <div className="shell grid gap-10 border-b border-slate-200 pb-12 lg:grid-cols-[0.86fr_1.14fr]">
+      <section className="bg-black text-white py-14 md:py-16">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">What We Do</p>
-            <h1 className="mt-4 max-w-xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl">
+            <p className="text-sm font-semibold text-[#7b80ff]">What We Do</p>
+            <h1 className="page-title">
               Product systems for work that needs more structure.
             </h1>
           </div>
           <div>
-            <p className="max-w-2xl text-base leading-8 text-slate-600">
+            <p className="max-w-2xl text-base leading-8 text-white/68">
               Vaxon sits between product company and workflow studio. We build focused AI products first, then extend the same thinking into work systems that can be reviewed, trusted, and scaled.
             </p>
-            <Link href="/products/emailflow" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
+            <Link href="/products/emailflow" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">
               See EmailFlow
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -65,10 +65,10 @@ export default function WhatWeDoPage() {
 
       <section className="bg-white pb-16 md:pb-24">
         <div className="shell">
-          <div className="border-t border-slate-950">
+          <div className="">
             {capabilities.map((item, index) => (
               <article key={item.id} id={item.id} className="scroll-mt-28 grid gap-5 border-b border-slate-200 py-9 md:grid-cols-[5rem_0.55fr_1fr]">
-                <p className="text-sm font-semibold text-cyan-700">0{index + 1}</p>
+                <p className="text-sm font-semibold text-[#494fdf]">0{index + 1}</p>
                 <h2 className="text-2xl font-semibold tracking-[-0.035em] text-slate-950">{item.title}</h2>
                 <p className="max-w-2xl text-base leading-8 text-slate-600">{item.copy}</p>
               </article>
@@ -77,7 +77,7 @@ export default function WhatWeDoPage() {
         </div>
       </section>
 
-      <section className="editorial-rule bg-slate-950 py-16 text-white md:py-20">
+      <section className="bg-black text-white py-16 md:py-20">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <h2 className="text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
             The proof has to be visible in the product.

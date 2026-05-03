@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { ContactForm } from '@/components/contact-form'
-import { absoluteUrl, site } from '@/lib/site'
+import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -19,32 +18,30 @@ const intents = [
 export default function ContactPage() {
   return (
     <main>
-      <section className="bg-white py-16">
-        <div className="shell grid gap-10 border-b border-slate-200 pb-12 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="page-hero">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">Contact</p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl">
-              Talk to Vaxon.
-            </h1>
+            <p className="page-kicker">Contact</p>
+            <h1 className="page-title">Talk to Vaxon.</h1>
           </div>
           <div>
-            <p className="max-w-2xl text-base leading-8 text-slate-600">
+            <p className="page-intro">
               Reach out about customers, investment conversations, partnerships, roles, or the next generation of AI productivity products.
             </p>
-            <Link href={`mailto:${site.email}`} className="mt-6 inline-flex text-sm font-semibold text-cyan-700">
-              {site.email}
-            </Link>
+            <p className="mt-7 max-w-md text-sm font-semibold leading-7 text-white/72">
+              Use the form below and the message will go directly to the Vaxon team.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="border-t border-slate-200">
+      <section className="bg-white py-16 md:py-24">
+        <div className="shell grid gap-12 lg:grid-cols-[0.78fr_1.22fr]">
+          <div className="plain-line-list">
             {intents.map(([title, copy]) => (
-              <div key={title} className="border-b border-slate-200 py-5">
-                <p className="text-sm font-semibold text-slate-950">{title}</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{copy}</p>
+              <div key={title} className="py-7">
+                <p className="text-xl font-semibold tracking-[-0.035em] text-[#191c1f]">{title}</p>
+                <p className="mt-3 max-w-md text-sm leading-7 text-[#505a63]">{copy}</p>
               </div>
             ))}
           </div>

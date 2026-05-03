@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { absoluteUrl, site } from '@/lib/site'
+import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -9,46 +9,57 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl('/careers') },
 }
 
+const values = ['Product taste', 'Engineering agency', 'Clear writing', 'User control']
+
 export default function CareersPage() {
   return (
     <main>
-      <section className="bg-white py-16">
-        <div className="shell grid gap-10 border-b border-slate-200 pb-12 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="page-hero">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">Careers</p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl">
-              We are early and selective.
-            </h1>
+            <p className="page-kicker">Careers</p>
+            <h1 className="page-title">Early, selective, product-minded.</h1>
           </div>
-          <p className="max-w-2xl text-base leading-8 text-slate-600">
+          <p className="page-intro">
             Vaxon is not listing formal roles yet. We are interested in people who care about product taste, engineering discipline, and useful AI systems.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <h2 className="text-2xl font-semibold tracking-[-0.035em] text-slate-950">What we value</h2>
-          <div className="border-t border-slate-200">
-            {['Tasteful product judgment', 'High agency engineering', 'Clear writing and structured thinking', 'Respect for privacy and user control'].map((item) => (
-              <p key={item} className="border-b border-slate-200 py-5 text-sm font-semibold text-slate-950">{item}</p>
+      <section className="bg-white py-16 md:py-24">
+        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+          <h2 className="max-w-lg text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#191c1f] md:text-6xl">
+            What we value.
+          </h2>
+          <div className="plain-line-list">
+            {values.map((item, index) => (
+              <div key={item} className="grid gap-4 py-7 md:grid-cols-[5rem_1fr]">
+                <p className="text-sm font-semibold text-[#494fdf]">0{index + 1}</p>
+                <p className="text-2xl font-semibold tracking-[-0.035em] text-[#191c1f]">{item}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="editorial-rule bg-white py-16">
-        <div className="shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <h2 className="text-2xl font-semibold tracking-[-0.035em] text-slate-950">How to reach us</h2>
+      <section className="bg-black py-16 text-white md:py-24">
+        <div className="shell grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
           <div>
-            <p className="max-w-xl text-sm leading-7 text-slate-600">
-              If you want to work on product design, AI workflows, frontend systems, or applied AI engineering, send a short note with what you have built and why this problem matters to you.
+            <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
+              Send what you have built.
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-white/64">
+              If you want to work on product design, AI workflows, frontend systems, or applied AI engineering, send a short note with why this problem matters to you.
             </p>
-            <Link href={`mailto:${site.email}`} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
-              Email Vaxon
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
+          <Link
+            href="/contact"
+            style={{ backgroundColor: '#ffffff', color: '#000000' }}
+            className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#c9c9cd]"
+          >
+            Contact Vaxon
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </main>

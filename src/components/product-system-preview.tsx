@@ -24,19 +24,19 @@ export function EmailFlowDashboardPreview({ compact = false, focus = 'dashboard'
   const copy = focusCopy[focus]
 
   return (
-    <figure className="product-preview border border-slate-200 bg-white">
-      <div className="border-b border-slate-200 px-5 py-4">
-        <p className="text-sm font-semibold text-slate-950">{copy.title}</p>
-        {!compact ? <p className="mt-1 text-xs leading-5 text-slate-500">{copy.description}</p> : null}
+    <figure className="product-preview bg-[#16181a] p-2 text-white">
+      <div className="px-4 py-4">
+        <p className="text-sm font-semibold text-white">{copy.title}</p>
+        {!compact ? <p className="mt-1 text-xs leading-5 text-white/60">{copy.description}</p> : null}
       </div>
-      <div className="bg-slate-50 p-2">
+      <div className="overflow-hidden rounded-[20px] bg-white">
         <Image
           src="/emailflow-dashboard.png"
           alt="EmailFlow dashboard showing workspace context, email attention alerts, task overview, email classification, priority distribution, and completion momentum."
           width={3840}
           height={1958}
           priority={!compact}
-          className="h-auto w-full border border-slate-200 bg-white"
+          className="h-auto w-full bg-white"
           sizes="(min-width: 1024px) 52vw, 100vw"
         />
       </div>
