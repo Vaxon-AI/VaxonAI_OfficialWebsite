@@ -19,7 +19,7 @@ export default function Home() {
           name: site.name,
           url: site.url,
           description: site.description,
-          logo: absoluteUrl('/vaxon-mark.png'),
+          logo: absoluteUrl('/vaxon-mark.jpg'),
         }}
       />
       <HomeScrollStory />

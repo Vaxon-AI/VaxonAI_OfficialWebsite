@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     siteName: 'Vaxon',
-    images: [{ url: '/vaxon-mark.png', width: 1024, height: 1024, alt: 'Vaxon mark' }],
+    images: [{ url: '/vaxon-mark.jpg', width: 1024, height: 1024, alt: 'Vaxon mark' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Vaxon | AI products and workflow systems for modern work',
     description: site.description,
-    images: ['/vaxon-mark.png'],
+    images: ['/vaxon-mark.jpg'],
   },
 }
 
