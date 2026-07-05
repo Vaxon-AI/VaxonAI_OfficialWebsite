@@ -28,21 +28,21 @@ export default function CareersPage() {
 
       <section className="bg-white py-16 md:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-          <h2 className="max-w-lg text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#191c1f] md:text-6xl">
+          <h2 className="max-w-lg text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-6xl">
             What we value.
           </h2>
           <div className="plain-line-list">
             {values.map((item, index) => (
               <div key={item} className="grid gap-4 py-7 md:grid-cols-[5rem_1fr]">
-                <p className="text-sm font-semibold text-[#494fdf]">0{index + 1}</p>
-                <p className="text-2xl font-semibold tracking-[-0.035em] text-[#191c1f]">{item}</p>
+                <p className="text-sm font-semibold text-[#5f6ec7]">0{index + 1}</p>
+                <p className="text-2xl font-semibold tracking-[-0.035em] text-[#12162e]">{item}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-black py-16 text-white md:py-24">
+      <section className="bg-[#0b0e2a] py-16 text-white md:py-24">
         <div className="shell grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">

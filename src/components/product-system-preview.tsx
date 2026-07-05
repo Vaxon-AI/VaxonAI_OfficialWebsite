@@ -24,7 +24,7 @@ export function EmailFlowDashboardPreview({ compact = false, focus = 'dashboard'
   const copy = focusCopy[focus]
 
   return (
-    <figure className="product-preview bg-[#16181a] p-2 text-white">
+    <figure className="product-preview bg-[#131845] p-2 text-white">
       <div className="px-4 py-4">
         <p className="text-sm font-semibold text-white">{copy.title}</p>
         {!compact ? <p className="mt-1 text-xs leading-5 text-white/60">{copy.description}</p> : null}

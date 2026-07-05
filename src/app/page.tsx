@@ -4,8 +4,8 @@ import { JsonLd } from '@/components/json-ld'
 import { absoluteUrl, site } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'AI products and workflow systems for modern work',
-  description: 'Vaxon builds AI products and workflow systems for people and teams turning everyday work into clear, reviewable operations.',
+  title: 'AI that works the way your team works',
+  description: 'Vaxon designs human-in-the-loop AI systems for real work — custom AI workflows for email, documents, research, and customer support.',
   alternates: { canonical: absoluteUrl('/') },
 }
 

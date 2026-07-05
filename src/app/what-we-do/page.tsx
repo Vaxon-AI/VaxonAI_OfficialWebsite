@@ -7,25 +7,54 @@ import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'What We Do',
-  description: 'Vaxon builds AI products, workflow automation, and email intelligence systems for modern work.',
+  description:
+    'Custom AI systems for businesses: workflow automation, knowledge and document intelligence, research pipelines, and AI assistants — all human-in-the-loop.',
   alternates: { canonical: absoluteUrl('/what-we-do') },
 }
 
-const capabilities = [
-  {
-    id: 'ai-product-development',
-    title: 'AI Product Development',
-    copy: 'We design product workflows where AI output is visible, editable, and useful inside the real product surface.',
-  },
+const services = [
   {
     id: 'workflow-automation',
-    title: 'Workflow Automation',
-    copy: 'We structure work before automating it: signals, status, routing, review, and the context behind each decision.',
+    title: 'AI Workflow Automation',
+    pain: 'Work signals arrive as messages, then vanish into threads.',
+    copy: 'We turn email- and message-driven work into structured, reviewable task flows: classification, priority, deadlines, and source context — with people approving what becomes active work.',
+    proof: { label: 'Proof: EmailFlow, our live product', href: '/products/emailflow' },
   },
   {
-    id: 'email-task-intelligence',
-    title: 'Email & Task Intelligence',
-    copy: 'We turn inbox-driven work into classifications, task suggestions, due dates, and source-linked project context.',
+    id: 'document-intelligence',
+    title: 'Knowledge & Document Intelligence',
+    pain: 'Internal knowledge is buried in PDFs, Word files, and image scans nobody can search.',
+    copy: 'AI reads your documents — including images — tags and classifies them into an organised knowledge base. Ask a question in plain language; get a summary with the source files cited, every time.',
+    proof: { label: 'Proof: Document Intelligence system', href: '/products#document-intelligence' },
+  },
+  {
+    id: 'research-intelligence',
+    title: 'Research & Content Intelligence',
+    pain: 'Research means hours of tabs, videos, and half-finished notes.',
+    copy: 'We build pipelines that search and summarise web content, extract subtitles from video, rewrite them into clean prose, and translate — so raw content becomes usable material.',
+    proof: { label: 'Proof: Research Intelligence system', href: '/products#research-intelligence' },
+  },
+  {
+    id: 'ai-assistants',
+    title: 'Custom AI Assistants',
+    pain: 'Support teams answer the same questions all day; bots without limits make it worse.',
+    copy: 'We build customer-facing chatbots and internal assistants grounded in your own knowledge, with human-handoff designed in from day one — automation that knows when to step aside.',
+    proof: { label: 'Built on the same review-first principles', href: '/about' },
+  },
+]
+
+const delivery = [
+  {
+    phase: 'Proof of concept',
+    copy: 'A small, real slice of your workflow, working end-to-end. Weeks, not months — so you can judge with evidence.',
+  },
+  {
+    phase: 'Pilot',
+    copy: 'Your team uses it on live work. We iterate weekly on what they actually do, not what a spec assumed.',
+  },
+  {
+    phase: 'Production',
+    copy: 'Hardened, monitored, and documented. Human review stays in the loop wherever the cost of an error is real.',
   },
 ]
 
@@ -43,48 +72,65 @@ export default function WhatWeDoPage() {
         }}
       />
 
-      <section className="bg-black text-white py-14 md:py-16">
+      <section className="page-hero">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-[#7b80ff]">What We Do</p>
-            <h1 className="page-title">
-              Product systems for work that needs more structure.
-            </h1>
+            <p className="page-kicker">What We Do</p>
+            <h1 className="page-title">Custom AI systems, built around your workflow.</h1>
           </div>
           <div>
-            <p className="max-w-2xl text-base leading-8 text-white/68">
-              Vaxon sits between product company and workflow studio. We build focused AI products first, then extend the same thinking into work systems that can be reviewed, trusted, and scaled.
+            <p className="page-intro">
+              We take on AI projects for businesses: automating message-driven work, making document archives searchable, turning research into usable material, and building assistants that know their limits.
             </p>
-            <Link href="/products/emailflow" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">
-              See EmailFlow
+            <Link href="/contact" className="primary-action mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors">
+              Talk to us
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-white pb-16 md:pb-24">
+      <section className="paper-band pb-16 pt-4 md:pb-24">
         <div className="shell">
-          <div className="">
-            {capabilities.map((item, index) => (
-              <article key={item.id} id={item.id} className="scroll-mt-28 grid gap-5 border-b border-slate-200 py-9 md:grid-cols-[5rem_0.55fr_1fr]">
-                <p className="text-sm font-semibold text-[#494fdf]">0{index + 1}</p>
-                <h2 className="text-2xl font-semibold tracking-[-0.035em] text-slate-950">{item.title}</h2>
-                <p className="max-w-2xl text-base leading-8 text-slate-600">{item.copy}</p>
-              </article>
-            ))}
-          </div>
+          {services.map((item, index) => (
+            <article key={item.id} id={item.id} className="editorial-row scroll-mt-28">
+              <span className="row-index">0{index + 1}</span>
+              <div>
+                <h3 className="text-[#12162e]">{item.title}</h3>
+                <p className="mt-4 text-base font-semibold text-[#59628f]">{item.pain}</p>
+              </div>
+              <div>
+                <p>{item.copy}</p>
+                <Link href={item.proof.href} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]">
+                  {item.proof.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="bg-black text-white py-16 md:py-20">
-        <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-          <h2 className="text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
-            The proof has to be visible in the product.
-          </h2>
-          <p className="max-w-2xl text-base leading-8 text-slate-300">
-            That is why EmailFlow is shown as the first product proof, not as a decorative AI diagram. The product surface should show the system: classification, review, priority, source context, and momentum.
-          </p>
+      <section className="dark-band py-16 md:py-24">
+        <div className="shell">
+          <div className="max-w-3xl">
+            <p className="page-kicker">How we deliver</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
+              Small steps, visible every week.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              We work agile: short cycles, working software at every step, and your team reviewing real output — not slideware.
+            </p>
+          </div>
+          <div className="mt-14 border-t border-[#c7cfec]/15">
+            {delivery.map((item, index) => (
+              <div key={item.phase} className="editorial-row editorial-row-dark">
+                <span className="row-index">0{index + 1}</span>
+                <h3 className="text-white">{item.phase}</h3>
+                <p>{item.copy}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

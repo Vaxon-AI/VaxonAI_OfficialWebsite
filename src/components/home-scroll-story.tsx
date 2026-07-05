@@ -1,32 +1,74 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useEffect } from 'react'
+import { CtaBand } from '@/components/cta-band'
 
-const storyPanels = [
+const services = [
   {
-    label: 'Intake',
-    title: 'Work arrives as messages.',
-    copy: 'EmailFlow starts where work already enters: inbox threads, follow-ups, deadlines, approvals, and project context.',
+    id: 'workflow-automation',
+    title: 'AI Workflow Automation',
+    copy: 'Work signals from email and messages become structured, reviewable task flows — nothing disappears into a thread.',
   },
   {
-    label: 'Review',
-    title: 'AI suggestions stay inspectable.',
-    copy: 'Tasks are separated into suggestions and active work so people can review the system before automation goes further.',
+    id: 'document-intelligence',
+    title: 'Knowledge & Document Intelligence',
+    copy: 'AI reads your files — PDFs, Word, images — tags and organises them, then answers questions with sources attached.',
   },
   {
-    label: 'Context',
-    title: 'Source context stays attached.',
-    copy: 'The product keeps the email, task, project, and status connected instead of turning work into another loose AI answer.',
+    id: 'research-intelligence',
+    title: 'Research & Content Intelligence',
+    copy: 'Web research, summarisation, and video-to-text pipelines that turn scattered content into usable material.',
+  },
+  {
+    id: 'ai-assistants',
+    title: 'Custom AI Assistants',
+    copy: 'Support chatbots and internal assistants with human-handoff built in — automation that knows its limits.',
   },
 ]
 
-const capabilities = [
-  ['AI Product Development', 'Focused AI products with visible output, editable decisions, and real workflow boundaries.'],
-  ['Workflow Automation', 'Structured signals, routing, status, and review before deeper automation.'],
-  ['Email Intelligence', 'Inbox classification, task suggestions, due dates, and source-linked project context.'],
+const principles = [
+  {
+    title: 'Agile',
+    copy: 'Small iterations, working software every week. You see progress, not promises.',
+  },
+  {
+    title: 'Custom-fit',
+    copy: 'Built around your workflow, not a template. The system adapts to how your team already works.',
+  },
+  {
+    title: 'Human-centred',
+    copy: 'AI assists people. It never replaces judgment, and it never acts where a person should decide.',
+  },
+  {
+    title: 'Human-in-the-loop',
+    copy: 'Every automated action stays reviewable, editable, and reversible. No hidden AI actions.',
+  },
+]
+
+const products = [
+  {
+    href: '/products/emailflow',
+    name: 'EmailFlow',
+    status: 'Active product',
+    copy: 'Inbox messages become reviewable tasks with priority and source context.',
+    cta: 'Explore EmailFlow',
+  },
+  {
+    href: '/products#document-intelligence',
+    name: 'Document Intelligence',
+    status: 'In development',
+    copy: 'AI file classification and retrieval with every answer traced to its source document.',
+    cta: 'View case study',
+  },
+  {
+    href: '/products#research-intelligence',
+    name: 'Research Intelligence',
+    status: 'In development',
+    copy: 'Web and video research distilled into clean, translated, citable notes.',
+    cta: 'View case study',
+  },
 ]
 
 export function HomeScrollStory() {
@@ -49,33 +91,34 @@ export function HomeScrollStory() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-black text-white">
-        <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
-        <div className="shell grid min-h-[calc(100svh-73px)] gap-12 py-16 md:py-24 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+      {/* 1 — Hero: company claim, not product pitch */}
+      <section className="dark-band relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-[#c7cfec]/10" />
+        <div className="shell grid min-h-[calc(100svh-73px)] gap-12 py-16 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold text-white/70">Vaxon</p>
+            <p className="page-kicker">Vaxon — AI systems studio</p>
             <h1 className="mt-5 max-w-2xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] md:text-7xl">
-              Work systems for AI that people can trust.
+              AI that works the way your team works.
             </h1>
-            <p className="mt-7 max-w-lg text-base leading-8 text-white/68">
-              Vaxon builds AI products around the messy places where work begins. EmailFlow is the first proof: inbox signals become reviewable tasks with context attached.
+            <p className="mt-7 max-w-lg text-lg leading-8 text-white/70">
+              Vaxon builds custom AI workflows for businesses — email, documents, research, and customer support. Our own products are the proof.
             </p>
-            <div className="mt-9 flex flex-wrap gap-5 text-sm font-semibold">
-              <Link href="/products/emailflow" className="inline-flex items-center gap-2 text-white">
-                See EmailFlow
+            <div className="mt-9 flex flex-wrap items-center gap-5 text-sm font-semibold">
+              <Link href="/contact" className="primary-action inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors">
+                Talk to us
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/what-we-do" className="inline-flex items-center gap-2 text-white/62">
-                What we do
+              <Link href="/products" className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white">
+                See our products
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
 
           <div className="workstream" aria-hidden="true">
-            {['Email signal', 'Classification', 'AI suggestion', 'Human review', 'Active task'].map((item, index) => (
+            {['Work arrives', 'AI structures it', 'People review', 'Action ships'].map((item, index) => (
               <div key={item} className="workstream-row" style={{ animationDelay: `${index * 180}ms` }}>
-                <span>{item}</span>
+                <span className="text-base">{item}</span>
                 <i />
               </div>
             ))}
@@ -83,69 +126,89 @@ export function HomeScrollStory() {
         </div>
       </section>
 
-      <section className="bg-black text-white">
-        <div className="shell grid gap-10 py-16 md:py-24 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <figure className="product-stage" data-reveal>
-              <Image
-                src="/emailflow-dashboard.png"
-                alt="EmailFlow dashboard showing email alerts, task metrics, classification, priority, and completion momentum."
-                width={3840}
-                height={1958}
-                priority
-                className="h-auto w-full"
-                sizes="(min-width: 1024px) 56vw, 100vw"
-              />
-            </figure>
+      {/* 2 — What we do: editorial numbered rows, light band */}
+      <section className="paper-band py-16 md:py-24">
+        <div className="shell">
+          <div className="max-w-3xl" data-reveal>
+            <p className="page-kicker">What we do</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
+              Four ways we put AI to work.
+            </h2>
           </div>
-
-          <div className="grid gap-6 lg:py-24">
-            {storyPanels.map((panel) => (
-              <article key={panel.label} className="story-panel" data-reveal>
-                <p className="text-sm font-semibold text-[#7b80ff]">{panel.label}</p>
-                <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">{panel.title}</h2>
-                <p className="mt-5 text-base leading-8 text-white/64">{panel.copy}</p>
-              </article>
+          <div className="mt-14 border-t border-[#dfe2ee]">
+            {services.map((item, index) => (
+              <Link key={item.id} href={`/what-we-do#${item.id}`} className="group block" data-reveal>
+                <div className="editorial-row">
+                  <span className="row-index">0{index + 1}</span>
+                  <h3 className="transition-colors group-hover:text-[#5f6ec7]">{item.title}</h3>
+                  <p>{item.copy}</p>
+                </div>
+              </Link>
             ))}
           </div>
+          <Link href="/what-we-do" className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]" data-reveal>
+            How we deliver
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
-      <section className="bg-white py-16 text-[#191c1f] md:py-24">
+      {/* 3 — How we work: methodology, dark band */}
+      <section className="dark-band py-16 md:py-24">
         <div className="shell">
           <div className="max-w-3xl" data-reveal>
-            <p className="text-sm font-semibold text-[#494fdf]">What Vaxon builds</p>
+            <p className="page-kicker">How we work</p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
-              Fewer surfaces. Clearer systems.
+              Principles before products.
             </h2>
           </div>
-          <div className="mt-14 border-t border-[#e2e2e7]">
-            {capabilities.map(([title, copy], index) => (
-              <div key={title} className="capability-line" data-reveal>
-                <span className="text-sm font-semibold text-[#494fdf]">0{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
+          <div className="mt-14 border-t border-[#c7cfec]/15">
+            {principles.map((item, index) => (
+              <div key={item.title} className="editorial-row editorial-row-dark" data-reveal>
+                <span className="row-index">0{index + 1}</span>
+                <h3 className="text-white">{item.title}</h3>
+                <p>{item.copy}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-black py-16 text-white md:py-24">
-        <div className="shell grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
-          <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
-            Build products where AI earns trust through review.
-          </h2>
-          <Link
-            href="/contact"
-            style={{ backgroundColor: '#ffffff', color: '#000000' }}
-            className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#c9c9cd]"
-          >
-            Contact Vaxon
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+      {/* 4 — Proof: products as evidence, light band */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="shell">
+          <div className="max-w-3xl" data-reveal>
+            <p className="page-kicker">The proof</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-6xl">
+              We ship our own products.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4e5573]">
+              Everything we build for clients uses the same principles we prove in our own products first.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {products.map((product) => (
+              <Link
+                key={product.name}
+                href={product.href}
+                className="group flex flex-col rounded-[24px] border border-[#dfe2ee] bg-[#f6f7fa] p-7 transition-shadow hover:soft-shadow"
+                data-reveal
+              >
+                <span className="status-chip self-start">{product.status}</span>
+                <h3 className="mt-5 text-2xl font-semibold tracking-[-0.035em] text-[#12162e]">{product.name}</h3>
+                <p className="mt-3 flex-1 text-base leading-7 text-[#4e5573]">{product.copy}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]">
+                  {product.cta}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* 5 — CTA */}
+      <CtaBand />
     </>
   )
 }

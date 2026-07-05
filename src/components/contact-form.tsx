@@ -3,7 +3,13 @@
 import { useState } from 'react'
 import { Send } from 'lucide-react'
 
-const intents = ['Customer', 'Investor', 'Partner', 'Careers', 'Other']
+const intents = [
+  'Workflow automation',
+  'Knowledge base & documents',
+  'AI assistant or chatbot',
+  'Partnership',
+  'Other',
+]
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -40,32 +46,32 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="rounded-[28px] border border-[#e2e2e7] bg-white p-6 md:p-8">
       <div className="grid gap-4 md:grid-cols-2">
-        <label className="grid gap-2 text-sm font-semibold text-[#191c1f]">
+        <label className="grid gap-2 text-sm font-semibold text-[#12162e]">
           Name
-          <input name="name" required minLength={2} className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#494fdf]" />
+          <input name="name" required minLength={2} className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]" />
         </label>
-        <label className="grid gap-2 text-sm font-semibold text-[#191c1f]">
+        <label className="grid gap-2 text-sm font-semibold text-[#12162e]">
           Email
-          <input name="email" required type="email" className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#494fdf]" />
+          <input name="email" required type="email" className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]" />
         </label>
       </div>
       <div className="mt-4 grid gap-4 md:grid-cols-2">
-        <label className="grid gap-2 text-sm font-semibold text-[#191c1f]">
+        <label className="grid gap-2 text-sm font-semibold text-[#12162e]">
           Company
-          <input name="company" className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#494fdf]" />
+          <input name="company" className="rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]" />
         </label>
-        <label className="grid gap-2 text-sm font-semibold text-[#191c1f]">
+        <label className="grid gap-2 text-sm font-semibold text-[#12162e]">
           Intent
-          <select name="intent" required defaultValue="Customer" className="rounded-xl border border-[#e2e2e7] bg-white px-4 py-3 text-sm font-normal outline-none transition focus:border-[#494fdf]">
+          <select name="intent" required defaultValue="Workflow automation" className="rounded-xl border border-[#e2e2e7] bg-white px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]">
             {intents.map((intent) => (
               <option key={intent} value={intent}>{intent}</option>
             ))}
           </select>
         </label>
       </div>
-      <label className="mt-4 grid gap-2 text-sm font-semibold text-[#191c1f]">
+      <label className="mt-4 grid gap-2 text-sm font-semibold text-[#12162e]">
         Message
-        <textarea name="message" required minLength={10} rows={6} className="resize-none rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#494fdf]" />
+        <textarea name="message" required minLength={10} rows={6} className="resize-none rounded-xl border border-[#e2e2e7] px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]" />
       </label>
 
       {state === 'success' ? (
@@ -80,8 +86,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state === 'submitting'}
-        style={{ backgroundColor: '#000000', color: '#ffffff' }}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
+        className="primary-action mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
       >
         {state === 'submitting' ? 'Sending...' : 'Send message'}
         <Send className="h-4 w-4" />

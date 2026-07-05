@@ -9,7 +9,7 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
       </span>
       <span className="flex min-w-0 flex-col leading-none">
         <span className={`${compact ? 'text-[13px]' : 'text-[15px]'} font-semibold tracking-[0.2em] text-current`}>VAXON</span>
-        <span className={`${compact ? 'text-[10px]' : 'text-[11px]'} mt-1 hidden font-medium text-current/55 sm:block`}>AI products for work</span>
+        <span className={`${compact ? 'text-[10px]' : 'text-[11px]'} mt-1 hidden font-medium text-current/55 sm:block`}>AI systems for real work</span>
       </span>
     </Link>
   )

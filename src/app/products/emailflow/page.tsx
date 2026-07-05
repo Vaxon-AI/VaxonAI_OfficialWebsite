@@ -45,10 +45,10 @@ export default function EmailFlowPage() {
         }}
       />
 
-      <section className="bg-black text-white py-14 md:py-16">
+      <section className="bg-[#0b0e2a] text-white py-14 md:py-16">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-sm font-semibold text-[#7b80ff]">Product / EmailFlow</p>
+            <p className="text-sm font-semibold text-[#8c96c8]">Product / EmailFlow</p>
             <h1 className="page-title">
               Email becomes a work system.
             </h1>
@@ -65,7 +65,7 @@ export default function EmailFlowPage() {
         </div>
       </section>
 
-      <section className="bg-black text-white pb-16 md:pb-24">
+      <section className="bg-[#0b0e2a] text-white pb-16 md:pb-24">
         <div className="shell">
           <EmailFlowDashboardPreview />
         </div>
@@ -87,7 +87,7 @@ export default function EmailFlowPage() {
         </div>
       </section>
 
-      <section className="bg-black text-white py-16 md:py-20">
+      <section className="bg-[#0b0e2a] text-white py-16 md:py-20">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <h2 className="text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
             Product constraints.
