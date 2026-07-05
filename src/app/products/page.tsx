@@ -92,10 +92,15 @@ export default function ProductsPage() {
               Active product · Email-to-task · Source-linked workflow
             </p>
             <div className="mt-8 flex flex-wrap gap-5">
-              <Link href="/products/emailflow" className="primary-action inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors">
+              <a
+                href="https://emailflow.vaxon.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="primary-action inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors"
+              >
                 Try it live
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
               <Link href="/products/emailflow" className="inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]">
                 Product detail
                 <ArrowRight className="h-4 w-4" />

@@ -3,8 +3,11 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
-import { posts } from '@/lib/posts'
+import { getPosts } from '@/lib/posts'
 import { absoluteUrl } from '@/lib/site'
+
+// Revalidate so newly published Sanity posts appear without a redeploy.
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -22,7 +25,8 @@ function formatDate(date: string) {
   })
 }
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
+  const posts = await getPosts()
   return (
     <main>
       <JsonLd

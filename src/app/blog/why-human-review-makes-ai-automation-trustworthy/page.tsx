@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
-import { getPost } from '@/lib/posts'
+import { getStaticPost } from '@/lib/posts'
 import { absoluteUrl, site } from '@/lib/site'
 
-const post = getPost('why-human-review-makes-ai-automation-trustworthy')!
+const post = getStaticPost('why-human-review-makes-ai-automation-trustworthy')!
 
 export const metadata: Metadata = {
   title: post.title,

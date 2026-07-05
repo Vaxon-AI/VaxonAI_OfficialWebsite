@@ -1,3 +1,5 @@
+import { fetchSanityPosts, sanityConfigured, type SanityPost } from './sanity'
+
 export type PostMeta = {
   slug: string
   title: string
@@ -7,10 +9,10 @@ export type PostMeta = {
   tags: string[]
 }
 
-// Post bodies live in src/app/blog/<slug>/page.tsx so each article
-// keeps full layout control without an MDX/CMS dependency.
-// Add new posts here (newest first) and create the matching route.
-export const posts: PostMeta[] = [
+// Static fallback posts — keep the site's blog alive before Sanity is
+// configured. Once an article with the same slug exists in Sanity, the
+// Sanity version wins. New posts should be written in Sanity Studio.
+export const staticPosts: PostMeta[] = [
   {
     slug: 'why-human-review-makes-ai-automation-trustworthy',
     title: 'Why human review makes AI automation trustworthy',
@@ -22,6 +24,26 @@ export const posts: PostMeta[] = [
   },
 ]
 
-export function getPost(slug: string) {
-  return posts.find((post) => post.slug === slug)
+export function getStaticPost(slug: string) {
+  return staticPosts.find((post) => post.slug === slug)
+}
+
+/** All posts for the index/sitemap: Sanity first, static fallback merged in. */
+export async function getPosts(): Promise<PostMeta[]> {
+  let sanityPosts: SanityPost[] = []
+  if (sanityConfigured) {
+    try {
+      sanityPosts = await fetchSanityPosts()
+    } catch (error) {
+      console.error('[posts] Sanity fetch failed, using static fallback:', error)
+    }
+  }
+
+  const sanitySlugs = new Set(sanityPosts.map((post) => post.slug))
+  const merged: PostMeta[] = [
+    ...sanityPosts,
+    ...staticPosts.filter((post) => !sanitySlugs.has(post.slug)),
+  ]
+
+  return merged.sort((a, b) => (a.date < b.date ? 1 : -1))
 }
