@@ -9,9 +9,10 @@ const contactSchema = z.object({
   intent: z.enum([
     'Workflow automation',
     'Knowledge base & documents',
+    'Research & content AI',
     'AI assistant or chatbot',
+    'Other AI project',
     'Partnership',
-    'Other',
   ]),
   message: z.string().trim().min(10).max(4000),
 })

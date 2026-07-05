@@ -6,9 +6,10 @@ import { Send } from 'lucide-react'
 const intents = [
   'Workflow automation',
   'Knowledge base & documents',
+  'Research & content AI',
   'AI assistant or chatbot',
+  'Other AI project',
   'Partnership',
-  'Other',
 ]
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
