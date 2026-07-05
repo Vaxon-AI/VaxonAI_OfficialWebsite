@@ -8,7 +8,7 @@ import { absoluteUrl } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'What We Do',
   description:
-    'Custom AI systems for businesses: workflow automation, knowledge and document intelligence, research pipelines, and AI assistants — all human-in-the-loop.',
+    'We take on AI projects of any shape — automation, document intelligence, research pipelines, assistants, and problems that do not have a name yet. All human-in-the-loop.',
   alternates: { canonical: absoluteUrl('/what-we-do') },
 }
 
@@ -80,7 +80,7 @@ export default function WhatWeDoPage() {
           </div>
           <div>
             <p className="page-intro">
-              We take on AI projects for businesses: automating message-driven work, making document archives searchable, turning research into usable material, and building assistants that know their limits.
+              We take on AI projects for businesses — if the problem involves AI, we can scope it. What follows is where we have already shipped working systems: proof of how we work, not the boundary of what we do.
             </p>
             <Link href="/contact" className="primary-action mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors">
               Talk to us
@@ -90,8 +90,15 @@ export default function WhatWeDoPage() {
         </div>
       </section>
 
-      <section className="paper-band pb-16 pt-4 md:pb-24">
+      <section className="paper-band pb-16 pt-16 md:pb-24">
         <div className="shell">
+          <div className="max-w-3xl">
+            <p className="page-kicker">Proven in production</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-5xl">
+              Where we have already shipped.
+            </h2>
+          </div>
+          <div className="mt-10 border-t border-[#dfe2ee]" />
           {services.map((item, index) => (
             <article key={item.id} id={item.id} className="editorial-row scroll-mt-28">
               <span className="row-index">0{index + 1}</span>
@@ -108,6 +115,21 @@ export default function WhatWeDoPage() {
               </div>
             </article>
           ))}
+
+          <div className="mt-16 grid gap-8 rounded-[28px] border border-[#dfe2ee] bg-white p-8 md:grid-cols-[1fr_auto] md:items-center md:p-12">
+            <div>
+              <h3 className="text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#12162e] md:text-4xl">
+                Not on the list? That&apos;s normal.
+              </h3>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-[#4e5573]">
+                Most projects we take on don&apos;t start with a neat category — they start with a messy workflow. If it involves AI — automation, extraction, generation, integration, vision, voice, or something you&apos;re not sure has a name yet — bring it to us and we&apos;ll scope it honestly.
+              </p>
+            </div>
+            <Link href="/contact" className="primary-action inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors">
+              Bring us your problem
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

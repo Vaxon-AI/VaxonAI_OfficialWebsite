@@ -132,8 +132,11 @@ export function HomeScrollStory() {
           <div className="max-w-3xl" data-reveal>
             <p className="page-kicker">What we do</p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
-              Four ways we put AI to work.
+              We take on AI projects. These are the ones we&apos;ve shipped.
             </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4e5573]">
+              Proof of approach, not the boundary of it — if the problem involves AI, we can scope it.
+            </p>
           </div>
           <div className="mt-14 border-t border-[#dfe2ee]">
             {services.map((item, index) => (
