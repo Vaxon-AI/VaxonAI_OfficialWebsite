@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
-import { EmailFlowIllustration } from '@/components/product-illustrations'
+import { CompanySystemIllustration } from '@/components/product-illustrations'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
 
-const stack = ['Gemini', 'OpenAI', 'Claude', 'Google Cloud', 'Gmail API', 'Vercel', 'Next.js', 'PostgreSQL', 'Prisma', 'Sanity']
+const stack = ['Gemini', 'OpenAI', 'Claude', 'Google Cloud', 'Vercel', 'Next.js', 'PostgreSQL']
 
 const services = [
   {
@@ -144,7 +144,7 @@ export function HomeScrollStory() {
             </div>
           </div>
 
-          <EmailFlowIllustration />
+          <CompanySystemIllustration />
         </div>
       </section>
 

@@ -1,5 +1,15 @@
-// Re-mounts on every route change — gives each page an entrance
-// transition without touching the header/footer in the root layout.
+'use client'
+
+import { usePathname } from 'next/navigation'
+
+// Keyed on pathname so EVERY navigation re-mounts the page body —
+// including moves between dynamic siblings like /services/a -> /services/b.
+// Header/footer live in layout.tsx and stay static.
 export default function Template({ children }: { children: React.ReactNode }) {
-  return <div className="page-enter">{children}</div>
+  const pathname = usePathname()
+  return (
+    <div key={pathname} className="page-enter">
+      {children}
+    </div>
+  )
 }

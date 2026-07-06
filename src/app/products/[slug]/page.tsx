@@ -4,11 +4,13 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Check } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
+import { EmailFlowIllustration } from '@/components/product-illustrations'
 import { DocumentsVisual, ResearchVisual } from '@/components/service-visuals'
 import { getProductCase, productCases } from '@/lib/products'
 import { absoluteUrl } from '@/lib/site'
 
 const visuals: Record<string, React.ReactNode> = {
+  emailflow: <EmailFlowIllustration />,
   'document-intelligence': <DocumentsVisual />,
   'research-intelligence': <ResearchVisual />,
 }
@@ -61,6 +63,17 @@ export default async function ProductCasePage({ params }: { params: Promise<Para
             <h1 className="page-title">{product.name}</h1>
             <p className="mt-4 max-w-xl text-lg font-semibold leading-8 text-[#c7cfec]">{product.headline}</p>
             <p className="mt-4 max-w-xl text-base leading-8 text-white/70">{product.copy}</p>
+            {product.liveUrl ? (
+              <a
+                href={product.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="primary-action mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors"
+              >
+                Try it live
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            ) : null}
           </div>
           {visuals[product.slug]}
         </div>

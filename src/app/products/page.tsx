@@ -99,7 +99,7 @@ export default function ProductsPage() {
             </h2>
           </div>
           <div className="mt-14 grid gap-10">
-            {productCases.map((study) => (
+            {productCases.filter((study) => study.slug !== 'emailflow').map((study) => (
               <article key={study.slug} id={study.slug} className="scroll-mt-28 grid gap-8 rounded-[28px] border border-[#dfe2ee] bg-white p-8 md:grid-cols-[0.9fr_1.1fr] md:p-12">
                 <div>
                   <div className="flex items-center gap-4">

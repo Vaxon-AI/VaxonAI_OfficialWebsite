@@ -1,16 +1,62 @@
 export type ProductCase = {
   slug: string
   name: string
-  status: 'Shipped' | 'In development'
+  status: 'Active product' | 'Shipped' | 'In development'
   headline: string
   copy: string
   problem: string
   pipeline: { title: string; copy: string }[]
   mechanisms: string[]
   useCases: string[]
+  liveUrl?: string
 }
 
 export const productCases: ProductCase[] = [
+  {
+    slug: 'emailflow',
+    name: 'EmailFlow',
+    status: 'Active product',
+    headline: 'Turn inbox messages into reviewable tasks.',
+    copy: 'EmailFlow helps people turn email-driven work into structured tasks with priority, source context, and human review — nothing disappears into a thread.',
+    problem:
+      'For most professionals, the inbox is the real task list — except it is a terrible one. Requests, deadlines, and approvals arrive buried in paragraphs, follow-ups sink under newer mail, and the todo app never knows what the inbox knows. The result is work that gets remembered instead of tracked: re-read threads, missed deadlines, and the nagging feeling that something is slipping.',
+    pipeline: [
+      {
+        title: 'Connect',
+        copy: 'Link your inbox once. EmailFlow starts where work already arrives — no new habits required.',
+      },
+      {
+        title: 'Classify',
+        copy: 'Each email is sorted: needs action, worth knowing, or ignorable. The noise stops competing with the work.',
+      },
+      {
+        title: 'Extract',
+        copy: 'Action emails become structured tasks — title, checklist, deadline, and priority scored by urgency and impact.',
+      },
+      {
+        title: 'Review',
+        copy: 'Suggestions stay separate from active work until you accept, edit, or reject them. Nothing automated masquerades as decided.',
+      },
+      {
+        title: 'Track',
+        copy: 'Approved tasks join your workspace with the source email attached — priorities, deadlines, and a daily digest.',
+      },
+    ],
+    mechanisms: [
+      'Email classification that learns how you handle senders',
+      'Task extraction with priority, deadlines, and checklists',
+      'AI suggestions stay separate until a person approves',
+      'Every task linked back to its source email',
+      'Daily digest of what needs attention',
+    ],
+    useCases: [
+      'Multi-project professionals',
+      'Client-facing follow-ups',
+      'Deadline-heavy workflows',
+      'Anyone whose inbox is the job',
+    ],
+    liveUrl: 'https://emailflow.vaxon.org/',
+  },
   {
     slug: 'document-intelligence',
     name: 'Document Intelligence',
