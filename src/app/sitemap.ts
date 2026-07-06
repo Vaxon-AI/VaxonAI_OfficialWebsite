@@ -2,7 +2,22 @@ import type { MetadataRoute } from 'next'
 import { getPosts } from '@/lib/posts'
 import { absoluteUrl } from '@/lib/site'
 
-const routes = ['/', '/services', '/products', '/products/emailflow', '/about', '/blog', '/careers', '/contact']
+const routes = [
+  '/',
+  '/services',
+  '/services/workflow-automation',
+  '/services/document-intelligence',
+  '/services/research-intelligence',
+  '/services/ai-assistants',
+  '/products',
+  '/products/emailflow',
+  '/products/document-intelligence',
+  '/products/research-intelligence',
+  '/about',
+  '/blog',
+  '/careers',
+  '/contact',
+]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = routes.map((route) => ({

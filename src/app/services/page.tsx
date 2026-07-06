@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
 import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from '@/components/service-visuals'
+import { services as serviceData } from '@/lib/services'
 import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -13,40 +14,21 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl('/services') },
 }
 
-const services = [
-  {
-    id: 'workflow-automation',
-    title: 'AI Workflow Automation',
-    pain: 'Work signals arrive as messages, then vanish into threads.',
-    copy: 'We turn email- and message-driven work into structured, reviewable task flows: classification, priority, deadlines, and source context — with people approving what becomes active work.',
-    proof: { label: 'Proof: EmailFlow, our live product', href: '/products/emailflow' },
-    visual: <WorkflowVisual />,
-  },
-  {
-    id: 'document-intelligence',
-    title: 'Knowledge & Document Intelligence',
-    pain: 'Internal knowledge is buried in PDFs, Word files, and image scans nobody can search.',
-    copy: 'AI reads your documents — including images — tags and classifies them into an organised knowledge base. Ask a question in plain language; get a summary with the source files cited, every time.',
-    proof: { label: 'Proof: Document Intelligence system', href: '/products#document-intelligence' },
-    visual: <DocumentsVisual />,
-  },
-  {
-    id: 'research-intelligence',
-    title: 'Research & Content Intelligence',
-    pain: 'Research means hours of tabs, videos, and half-finished notes.',
-    copy: 'We build pipelines that search and summarise web content, extract subtitles from video, rewrite them into clean prose, and translate — so raw content becomes usable material.',
-    proof: { label: 'Proof: Research Intelligence system', href: '/products#research-intelligence' },
-    visual: <ResearchVisual />,
-  },
-  {
-    id: 'ai-assistants',
-    title: 'Custom AI Assistants',
-    pain: 'Support teams answer the same questions all day; bots without limits make it worse.',
-    copy: 'We build customer-facing chatbots and internal assistants grounded in your own knowledge, with human-handoff designed in from day one — automation that knows when to step aside.',
-    proof: { label: 'Built on the same review-first principles', href: '/about' },
-    visual: <AssistantVisual />,
-  },
-]
+const visuals: Record<string, React.ReactNode> = {
+  'workflow-automation': <WorkflowVisual />,
+  'document-intelligence': <DocumentsVisual />,
+  'research-intelligence': <ResearchVisual />,
+  'ai-assistants': <AssistantVisual />,
+}
+
+const services = serviceData.map((service) => ({
+  id: service.slug,
+  title: service.title,
+  pain: service.pain,
+  copy: service.summary,
+  proof: service.proof,
+  visual: visuals[service.slug],
+}))
 
 const delivery = [
   {
@@ -116,10 +98,15 @@ export default function WhatWeDoPage() {
                   <h3 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-[#12162e] md:text-2xl">{item.title}</h3>
                   <p className="mt-3 text-sm font-semibold text-[#59628f]">{item.pain}</p>
                   <p className="mt-3 max-w-xl text-base leading-7 text-[#4e5573]">{item.copy}</p>
-                  <Link href={item.proof.href} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]">
-                    {item.proof.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <Link href={`/services/${item.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[#5f6ec7]">
+                      Learn more
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link href={item.proof.href} className="inline-flex items-center gap-2 text-sm font-semibold text-[#8c96c8] hover:text-[#5f6ec7]">
+                      {item.proof.label}
+                    </Link>
+                  </div>
                 </div>
                 {item.visual}
               </article>

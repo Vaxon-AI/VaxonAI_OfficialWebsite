@@ -8,16 +8,15 @@ export const site = {
 
 export const productLinks = [
   { href: '/products/emailflow', label: 'EmailFlow' },
-  { href: '/products#document-intelligence', label: 'Document Intelligence' },
-  { href: '/products#research-intelligence', label: 'Research Intelligence' },
-  { href: '/products#tax-aware', label: 'Tax Aware' },
+  { href: '/products/document-intelligence', label: 'Document Intelligence' },
+  { href: '/products/research-intelligence', label: 'Research Intelligence' },
 ]
 
 export const serviceLinks = [
-  { href: '/services#workflow-automation', label: 'Workflow Automation' },
-  { href: '/services#document-intelligence', label: 'Document Intelligence' },
-  { href: '/services#research-intelligence', label: 'Research & Content' },
-  { href: '/services#ai-assistants', label: 'AI Assistants' },
+  { href: '/services/workflow-automation', label: 'Workflow Automation' },
+  { href: '/services/document-intelligence', label: 'Document Intelligence' },
+  { href: '/services/research-intelligence', label: 'Research & Content' },
+  { href: '/services/ai-assistants', label: 'AI Assistants' },
 ]
 
 export type NavItem = {

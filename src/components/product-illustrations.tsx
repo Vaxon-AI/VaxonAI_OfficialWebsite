@@ -1,132 +1,131 @@
 import {
   Sparkles,
-  CheckCircle2,
   ArrowUpRight,
   ArrowDown,
   Minus,
-  Landmark,
-  Camera,
-  FolderOpen,
+  Tag,
+  FileText,
+  TrendingUp,
+  Lightbulb,
   FileCheck2,
-  Receipt,
+  Building2,
+  ShieldCheck,
 } from 'lucide-react'
 
-// Rich, code-drawn product illustrations on deep-navy panels —
-// replaces raw dashboard screenshots. Style reference: glowing
-// message→AI→tasks / receipt→context→evidence flows.
+// Light, code-drawn EmailFlow illustration — reference style:
+// Inbox → AI review (orb + capability chips) → Reviewable tasks.
+// White panels on a soft light frame; works on dark hero and light pages.
 
-const float = (index: number) => ({ animationDelay: `${index * 200}ms` })
+const avatars = [
+  { initial: 'J', bg: '#5f6ec7' },
+  { initial: 'A', bg: '#2fa39a' },
+  { initial: 'M', bg: '#8b5cf6' },
+]
 
-function AiNode() {
+const emails = [
+  { from: 'John Appleseed', subject: 'Q2 report review', time: '9:12 AM' },
+  { from: 'Acme Corp', subject: 'Vendor follow-up', time: '8:47 AM' },
+  { from: 'Maya Li', subject: 'Policy update', time: '7:31 AM' },
+]
+
+const capabilities = [
+  { icon: Tag, label: 'Classify' },
+  { icon: FileText, label: 'Extract' },
+  { icon: TrendingUp, label: 'Prioritize' },
+  { icon: Lightbulb, label: 'Suggest' },
+]
+
+const tasks = [
+  { icon: FileText, title: 'Review Q2 report', source: 'Q2_Report.pdf', level: 'High', tone: '#d9534a', arrow: <ArrowUpRight className="h-3.5 w-3.5" /> },
+  { icon: Building2, title: 'Vendor follow-up', source: 'Quote request', level: 'Medium', tone: '#d9962b', arrow: <Minus className="h-3.5 w-3.5" /> },
+  { icon: ShieldCheck, title: 'Check policy update', source: 'Policy.docx', level: 'Low', tone: '#3f9d6b', arrow: <ArrowDown className="h-3.5 w-3.5" /> },
+]
+
+function Chip({ icon: Icon, label }: { icon: typeof Tag; label: string }) {
   return (
-    <div className="flex flex-col items-center gap-1" aria-hidden="true">
-      <span className="h-4 w-px border-l border-dashed border-[#8c96c8]/60" />
-      <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#8c96c8]/40 bg-[#5f6ec7]/20 text-[#c7cfec] shadow-[0_0_30px_rgba(95,110,199,0.45)]">
-        <Sparkles className="h-5 w-5" />
-      </span>
-      <span className="h-4 w-px border-l border-dashed border-[#8c96c8]/60" />
-    </div>
+    <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#e3e7f2] bg-white px-3 py-1.5 text-xs font-semibold text-[#12162e] shadow-sm">
+      <Icon className="h-3.5 w-3.5 text-[#5f6ec7]" />
+      {label}
+    </span>
   )
 }
 
 export function EmailFlowIllustration() {
-  const messages = [
-    { initial: 'J', from: 'Client request', snippet: 'Please review the Q2 report…', time: '9:12 AM' },
-    { initial: 'A', from: 'Vendor follow-up', snippet: 'Just checking in on invoice…', time: '8:47 AM' },
-    { initial: 'M', from: 'Policy update', snippet: 'New compliance changes…', time: '7:31 AM' },
-  ]
-
-  const tasks = [
-    { title: 'Review Q2 report', level: 'High', tone: 'text-[#ff8f75]', icon: <ArrowUpRight className="h-3.5 w-3.5" /> },
-    { title: 'Follow up on invoice', level: 'Medium', tone: 'text-[#e8c268]', icon: <Minus className="h-3.5 w-3.5" /> },
-    { title: 'Check compliance update', level: 'Low', tone: 'text-[#7fd6a4]', icon: <ArrowDown className="h-3.5 w-3.5" /> },
-  ]
-
   return (
-    <div className="grid gap-1 rounded-[24px] border border-[#c7cfec]/14 bg-[linear-gradient(160deg,#131845,#0b0e2a_70%)] p-6 text-white shadow-[0_30px_90px_rgba(11,14,42,0.4)]" aria-hidden="true">
-      <div className="grid gap-2">
-        {messages.map((message, index) => (
-          <div key={message.from} className="workstream-row !min-h-0 !animate-none !py-2.5 !pl-4" style={float(index)}>
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#5f6ec7]/30 text-xs font-bold text-[#c7cfec]">
-              {message.initial}
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-sm font-semibold">{message.from}</span>
-              <span className="block truncate text-xs text-white/50">{message.snippet}</span>
-            </span>
-            <span className="shrink-0 text-xs text-white/40">{message.time}</span>
-          </div>
-        ))}
-      </div>
-
-      <AiNode />
-
-      <div className="grid gap-2 rounded-2xl border border-[#c7cfec]/12 bg-white/[0.03] p-3">
-        {tasks.map((task) => (
-          <div key={task.title} className="flex items-center gap-3 rounded-xl px-2 py-1.5">
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-[#8c96c8]" />
-            <span className="flex-1 truncate text-sm font-medium">{task.title}</span>
-            <span className={`inline-flex items-center gap-1 text-xs font-bold ${task.tone}`}>
-              {task.icon}
-              {task.level}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-export function TaxAwareIllustration() {
-  return (
-    <div className="grid gap-1 rounded-[24px] border border-[#c7cfec]/14 bg-[linear-gradient(160deg,#131845,#0b0e2a_70%)] p-6 text-white shadow-[0_30px_90px_rgba(11,14,42,0.4)]" aria-hidden="true">
-      <div className="mx-auto w-full max-w-[240px] rounded-lg bg-white p-4 text-[#12162e] shadow-lg">
-        <p className="flex items-center gap-2 text-xs font-bold tracking-[0.14em]">
-          <Receipt className="h-3.5 w-3.5 text-[#5f6ec7]" />
-          RECEIPT
-        </p>
-        <div className="mt-2 grid gap-1 font-mono text-[11px] text-[#4e5573]">
-          {[
-            ['Cafe Co.', '$28.50'],
-            ['Office Supplies', '$124.00'],
-            ['Taxi', '$46.30'],
-          ].map(([label, amount]) => (
-            <p key={label} className="flex justify-between"><span>{label}</span><span>{amount}</span></p>
+    <div className="rounded-[26px] border border-[#e3e7f2] bg-[#f6f7fa] p-5 shadow-[0_30px_90px_rgba(11,14,42,0.16)]" aria-hidden="true">
+      {/* 1 — Inbox */}
+      <div className="rounded-2xl border border-[#e7eaf3] bg-white p-4 shadow-sm">
+        <div className="flex items-center justify-between">
+          <p className="text-sm font-bold text-[#12162e]">Inbox</p>
+          <span className="rounded-full bg-[#5f6ec7]/10 px-2.5 py-0.5 text-xs font-bold text-[#5f6ec7]">12 new</span>
+        </div>
+        <div className="mt-3 grid gap-2.5">
+          {emails.map((email, index) => (
+            <div key={email.subject} className="flex items-center gap-3">
+              <span
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-bold text-white"
+                style={{ backgroundColor: avatars[index].bg }}
+              >
+                {avatars[index].initial}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13px] font-semibold text-[#12162e]">{email.from}</span>
+                <span className="block truncate text-xs text-[#8a90a8]">{email.subject}</span>
+              </span>
+              <span className="shrink-0 text-[11px] text-[#a3a9c0]">{email.time}</span>
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#5f6ec7]" />
+            </div>
           ))}
         </div>
       </div>
 
-      <AiNode />
-
-      <div className="grid gap-2 rounded-2xl border border-[#c7cfec]/12 bg-white/[0.03] p-3 text-sm">
-        <div className="flex items-center gap-3 px-2 py-1">
-          <Landmark className="h-4 w-4 shrink-0 text-[#8c96c8]" />
-          <span className="flex-1 font-semibold">Tax context added</span>
-          <CheckCircle2 className="h-4 w-4 text-[#7fd6a4]" />
+      {/* 2 — AI review: orb + capability chips */}
+      <div className="my-4 flex flex-col items-center gap-2.5">
+        <span className="h-4 w-px border-l border-dashed border-[#b9c1de]" />
+        <Chip icon={Tag} label={capabilities[0].label} />
+        <div className="flex items-center gap-3">
+          <Chip icon={FileText} label={capabilities[1].label} />
+          <span className="relative grid h-14 w-14 place-items-center rounded-full bg-[linear-gradient(145deg,#8b96e8,#4f5ec0)] text-white shadow-[0_10px_34px_rgba(95,110,199,0.5)]">
+            <span className="absolute inset-[-8px] rounded-full border border-[#5f6ec7]/20" />
+            <span className="flex flex-col items-center leading-none">
+              <Sparkles className="h-4 w-4" />
+              <span className="mt-0.5 text-[10px] font-bold tracking-wide">AI</span>
+            </span>
+          </span>
+          <Chip icon={TrendingUp} label={capabilities[2].label} />
         </div>
-        <div className="flex items-center justify-between px-2 text-xs text-white/60">
-          <span>Deductible</span>
-          <span className="rounded-full bg-[#7fd6a4]/15 px-2 py-0.5 font-bold text-[#7fd6a4]">100%</span>
-        </div>
-        <div className="flex items-center justify-between px-2 text-xs text-white/60">
-          <span>Category</span>
-          <span className="font-semibold text-white/85">Office Expenses</span>
-        </div>
+        <Chip icon={Lightbulb} label={capabilities[3].label} />
+        <span className="h-4 w-px border-l border-dashed border-[#b9c1de]" />
       </div>
 
-      <div className="flex justify-center py-1 text-[#8c96c8]"><ArrowDown className="h-4 w-4" /></div>
-
-      <div className="flex items-center gap-3 rounded-2xl border border-[#c7cfec]/12 bg-white/[0.03] px-4 py-3">
-        <FileCheck2 className="h-4 w-4 shrink-0 text-[#8c96c8]" />
-        <span className="flex-1 text-sm font-semibold">Evidence pack ready</span>
-        <span className="rounded-full bg-[#5f6ec7]/25 px-2.5 py-0.5 text-xs font-bold text-[#c7cfec]">3 items</span>
+      {/* 3 — Reviewable tasks */}
+      <div className="rounded-2xl border border-[#e7eaf3] bg-white p-4 shadow-sm">
+        <div className="flex items-center justify-between">
+          <p className="text-sm font-bold text-[#12162e]">Reviewable tasks</p>
+          <span className="rounded-full bg-[#5f6ec7]/10 px-2.5 py-0.5 text-xs font-bold text-[#5f6ec7]">3</span>
+        </div>
+        <div className="mt-3 grid gap-2">
+          {tasks.map((task) => (
+            <div key={task.title} className="flex items-center gap-3 rounded-xl border border-[#eef0f7] bg-[#fbfbfd] px-3 py-2.5">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#5f6ec7]/10 text-[#5f6ec7]">
+                <task.icon className="h-4 w-4" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13px] font-semibold text-[#12162e]">{task.title}</span>
+                <span className="block truncate text-[11px] text-[#8a90a8]">Source: email · {task.source}</span>
+              </span>
+              <span className="inline-flex shrink-0 items-center gap-1 text-xs font-bold" style={{ color: task.tone }}>
+                {task.arrow}
+                {task.level}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 flex items-center justify-between border-t border-[#eef0f7] pt-2.5 text-xs font-semibold text-[#5f6ec7]">
+          View all tasks
+          <FileCheck2 className="h-3.5 w-3.5" />
+        </p>
       </div>
     </div>
   )
 }
-
-export const taxAwareChips = [
-  { icon: Camera, label: 'Receipt capture' },
-  { icon: Landmark, label: 'Tax context' },
-  { icon: FolderOpen, label: 'Evidence pack' },
-]

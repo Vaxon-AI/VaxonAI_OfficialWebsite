@@ -172,7 +172,7 @@ export function HomeScrollStory() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {services.map((item) => (
-              <Link key={item.id} href={`/services#${item.id}`} className="group grid content-start gap-4" data-reveal>
+              <Link key={item.id} href={`/services/${item.id}`} className="group grid content-start gap-4" data-reveal>
                 <div>
                   <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#12162e] transition-colors group-hover:text-[#5f6ec7]">
                     {item.title}
@@ -220,9 +220,9 @@ export function HomeScrollStory() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/products/emailflow', name: 'EmailFlow', status: 'Active product', copy: 'Inbox messages become reviewable tasks with priority and source context.', cta: 'Explore EmailFlow' },
-              { href: '/products#document-intelligence', name: 'Document Intelligence', status: 'Shipped', copy: 'AI file classification and retrieval — every answer cites its source.', cta: 'View case study' },
-              { href: '/products#research-intelligence', name: 'Research Intelligence', status: 'Shipped', copy: 'Web and video research distilled into clean, citable notes.', cta: 'View case study' },
-              { href: '/products#tax-aware', name: 'Tax Aware', status: 'In development', copy: 'Everyday expenses become tax-ready records with evidence attached.', cta: 'Learn about Tax Aware' },
+              { href: '/products/document-intelligence', name: 'Document Intelligence', status: 'Shipped', copy: 'AI file classification and retrieval — every answer cites its source.', cta: 'View product' },
+              { href: '/products/research-intelligence', name: 'Research Intelligence', status: 'Shipped', copy: 'Web and video research distilled into clean, citable notes.', cta: 'View product' },
+              { href: '/products', name: 'Tax Aware', status: 'In development', copy: 'A simpler way to stay on top of your own tax. Details soon.', cta: 'Coming soon' },
             ].map((product) => (
               <Link
                 key={product.name}
