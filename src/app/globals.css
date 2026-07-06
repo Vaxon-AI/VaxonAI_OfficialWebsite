@@ -460,23 +460,9 @@ textarea {
   filter: blur(90px);
   opacity: 0.26;
   pointer-events: none;
-  animation: glowDrift 22s ease-in-out infinite alternate;
-}
-
-/* Cursor-following spotlight in the hero — driven by rAF lerp in JS */
-.hero-spotlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 260px;
-  height: 260px;
-  border-radius: 9999px;
-  background: #7c8ae0;
-  filter: blur(70px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 500ms ease;
+  transition: opacity 600ms ease;
   will-change: transform;
+  animation: glowDrift 22s ease-in-out infinite alternate;
 }
 
 @keyframes glowDrift {

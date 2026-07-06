@@ -101,48 +101,87 @@ function useTypewriter(words: string[]) {
   return text
 }
 
-// Cursor-following spotlight: lerped via rAF so the glow trails the
-// pointer with inertia. Desktop pointers only; reduced-motion opts out.
-function useSpotlight() {
+// Glow focus: on hover the two ambient glows themselves shrink and
+// trail the cursor (taking over seamlessly from the drift animation);
+// on leave they ease home and hand back to the drift.
+function useGlowFocus() {
   const sectionRef = useRef<HTMLElement>(null)
-  const glowRef = useRef<HTMLDivElement>(null)
+  const glowARef = useRef<HTMLDivElement>(null)
+  const glowBRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const section = sectionRef.current
-    const glow = glowRef.current
-    if (!section || !glow) return
+    const els = [glowARef.current, glowBRef.current]
+    if (!section || els.some((el) => !el)) return
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    let targetX = 0
-    let targetY = 0
-    let x = 0
-    let y = 0
+    const states = [
+      { el: els[0]!, x: 0, y: 0, s: 1, baseX: 0, baseY: 0, offsetX: -34, offsetY: -22, speed: 0.09, focusScale: 0.42 },
+      { el: els[1]!, x: 0, y: 0, s: 1, baseX: 0, baseY: 0, offsetX: 38, offsetY: 30, speed: 0.055, focusScale: 0.5 },
+    ]
+
+    let cursorX = 0
+    let cursorY = 0
+    let mode: 'idle' | 'track' | 'restore' = 'idle'
     let raf = 0
-    let running = false
+
+    // Read the drift animation's current transform so tracking starts
+    // exactly where the glow visually is — no jump on takeover.
+    const takeover = () => {
+      for (const st of states) {
+        const raw = getComputedStyle(st.el).transform
+        const matrix = raw === 'none' ? new DOMMatrix() : new DOMMatrix(raw)
+        const rect = st.el.getBoundingClientRect()
+        st.x = matrix.m41
+        st.y = matrix.m42
+        st.s = matrix.a || 1
+        st.baseX = rect.left + rect.width / 2 - st.x
+        st.baseY = rect.top + rect.height / 2 - st.y
+        st.el.style.animation = 'none'
+        st.el.style.opacity = '0.38'
+      }
+    }
 
     const loop = () => {
-      x += (targetX - x) * 0.08
-      y += (targetY - y) * 0.08
-      glow.style.transform = `translate3d(${x - 130}px, ${y - 130}px, 0)`
+      let settled = true
+      for (const st of states) {
+        const tx = mode === 'track' ? cursorX - st.baseX + st.offsetX : 0
+        const ty = mode === 'track' ? cursorY - st.baseY + st.offsetY : 0
+        const ts = mode === 'track' ? st.focusScale : 1
+        st.x += (tx - st.x) * st.speed
+        st.y += (ty - st.y) * st.speed
+        st.s += (ts - st.s) * st.speed
+        st.el.style.transform = `translate(${st.x}px, ${st.y}px) scale(${st.s})`
+        if (Math.abs(tx - st.x) > 0.5 || Math.abs(ty - st.y) > 0.5 || Math.abs(ts - st.s) > 0.005) settled = false
+      }
+      if (mode === 'restore' && settled) {
+        // Back at the drift's identity pose — hand control to the animation.
+        for (const st of states) {
+          st.el.style.transform = ''
+          st.el.style.animation = ''
+          st.el.style.opacity = ''
+        }
+        mode = 'idle'
+        return
+      }
       raf = requestAnimationFrame(loop)
     }
 
     const handleMove = (event: MouseEvent) => {
-      const rect = section.getBoundingClientRect()
-      targetX = event.clientX - rect.left
-      targetY = event.clientY - rect.top
-      if (!running) {
-        running = true
-        x = targetX
-        y = targetY
-        loop()
+      cursorX = event.clientX
+      cursorY = event.clientY
+      if (mode === 'idle') {
+        takeover()
+        mode = 'track'
+        raf = requestAnimationFrame(loop)
+      } else {
+        mode = 'track'
       }
-      glow.style.opacity = '0.34'
     }
 
     const handleLeave = () => {
-      glow.style.opacity = '0'
+      if (mode === 'track') mode = 'restore'
     }
 
     section.addEventListener('mousemove', handleMove)
@@ -154,12 +193,12 @@ function useSpotlight() {
     }
   }, [])
 
-  return { sectionRef, glowRef }
+  return { sectionRef, glowARef, glowBRef }
 }
 
 export function HomeScrollStory() {
   const text = useTypewriter(heroWords)
-  const { sectionRef, glowRef } = useSpotlight()
+  const { sectionRef, glowARef, glowBRef } = useGlowFocus()
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
@@ -180,16 +219,17 @@ export function HomeScrollStory() {
 
   return (
     <>
-      {/* 1 — Hero: centred type + drifting glow + cursor spotlight */}
+      {/* 1 — Hero: centred type + glows that focus onto the cursor */}
       <section ref={sectionRef} className="dark-band relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-px bg-[#c7cfec]/10" />
-        <div ref={glowRef} aria-hidden="true" className="hero-spotlight" />
         <div
+          ref={glowARef}
           aria-hidden="true"
           className="hero-glow"
           style={{ top: '-12%', right: '-4%', width: 540, height: 540, background: '#5f6ec7' }}
         />
         <div
+          ref={glowBRef}
           aria-hidden="true"
           className="hero-glow"
           style={{ bottom: '-18%', left: '-8%', width: 440, height: 440, background: '#8c96c8', animationDelay: '-11s', animationDuration: '27s' }}
