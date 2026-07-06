@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
-import { CompanySystemIllustration } from '@/components/product-illustrations'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
 
@@ -124,36 +123,42 @@ export function HomeScrollStory() {
 
   return (
     <>
-      {/* 1 — Hero: company claim with rotating word */}
+      {/* 1 — Hero: centred type + drifting background glow */}
       <section className="dark-band relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-px bg-[#c7cfec]/10" />
-        <div className="shell grid min-h-[72svh] gap-12 py-16 md:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <p className="page-kicker">Vaxon — AI systems studio</p>
-            <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-0.045em] md:text-5xl">
-              AI that works the way your{' '}
-              <span className="text-[#c7cfec]">
-                {text}
-                <span className="type-caret" />
-              </span>{' '}
-              works.
-            </h1>
-            <p className="mt-6 max-w-lg text-base leading-8 text-white/70">
-              Vaxon builds custom AI workflows for businesses — email, documents, research, and customer support. Our own products are the proof.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-5 text-sm font-semibold">
-              <Link href="/contact" className="primary-action inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors">
-                Talk to us
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link href="/products" className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white">
-                See our products
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+        <div
+          aria-hidden="true"
+          className="hero-glow"
+          style={{ top: '-12%', right: '-4%', width: 540, height: 540, background: '#5f6ec7' }}
+        />
+        <div
+          aria-hidden="true"
+          className="hero-glow"
+          style={{ bottom: '-18%', left: '-8%', width: 440, height: 440, background: '#8c96c8', animationDelay: '-11s', animationDuration: '27s' }}
+        />
+        <div className="shell relative flex min-h-[64svh] flex-col items-center justify-center py-16 text-center md:py-20">
+          <p className="page-kicker">Vaxon — AI systems studio</p>
+          <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.045em] md:text-5xl">
+            AI that works the way your{' '}
+            <span className="text-[#c7cfec]">
+              {text}
+              <span className="type-caret" />
+            </span>{' '}
+            works.
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-white/70">
+            Vaxon builds custom AI workflows for businesses — email, documents, research, and customer support. Our own products are the proof.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm font-semibold">
+            <Link href="/contact" className="primary-action inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors">
+              Talk to us
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/products" className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white">
+              See our products
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-
-          <CompanySystemIllustration />
         </div>
       </section>
 

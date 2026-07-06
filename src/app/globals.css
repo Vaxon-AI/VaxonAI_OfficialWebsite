@@ -453,6 +453,31 @@ textarea {
   animation: dropdownIn 180ms ease both;
 }
 
+/* Hero background glow — slow-drifting periwinkle light, pure atmosphere */
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.26;
+  pointer-events: none;
+  animation: glowDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(48px, 32px) scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow {
+    animation: none;
+  }
+}
+
 /* Page entrance transition — applied by app/template.tsx on every navigation.
    Pure opacity fade: no movement, no "flash". */
 .page-enter {
