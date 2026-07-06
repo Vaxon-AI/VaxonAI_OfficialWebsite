@@ -8,7 +8,16 @@ import { CompanySystemIllustration } from '@/components/product-illustrations'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
 
-const stack = ['Gemini', 'OpenAI', 'Claude', 'Google Cloud', 'Vercel', 'Next.js', 'PostgreSQL']
+const beliefs = [
+  'Human-in-the-loop',
+  'Source-linked answers',
+  'No hidden AI actions',
+  'Review before automation',
+  'Working software weekly',
+  'Built around your workflow',
+  'Honest scoping',
+  'Multi-model, no lock-in',
+]
 
 const services = [
   {
@@ -148,16 +157,20 @@ export function HomeScrollStory() {
         </div>
       </section>
 
-      {/* 2 — Stack marquee */}
+      {/* 2 — Beliefs marquee */}
       <section className="border-b border-[#dfe2ee] bg-white py-8">
         <div className="shell">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-[#8c96c8]">
-            The stack we build on
+            How we build
           </p>
           <div className="marquee mt-5" aria-hidden="true">
             <div className="marquee-track">
-              {[...stack, ...stack].map((item, index) => (
-                <span key={`${item}-${index}`} className="marquee-chip">{item}</span>
+              {[0, 1].map((group) => (
+                <div key={group} className="marquee-group">
+                  {beliefs.map((item) => (
+                    <span key={item} className="marquee-chip">{item}</span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>

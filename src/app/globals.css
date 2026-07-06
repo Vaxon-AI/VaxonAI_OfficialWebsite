@@ -423,9 +423,16 @@ textarea {
 
 .marquee-track {
   display: flex;
-  gap: 14px;
   width: max-content;
   animation: marqueeX 30s linear infinite;
+}
+
+/* Each group carries its own gap AND trailing gap, so the track is
+   exactly two identical halves — translateX(-50%) loops seamlessly. */
+.marquee-group {
+  display: flex;
+  gap: 14px;
+  padding-right: 14px;
 }
 
 .marquee-chip {
