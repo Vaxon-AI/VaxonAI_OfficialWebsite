@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from '@/components/service-visuals'
+import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
 import { EmailFlowIllustration } from '@/components/product-illustrations'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
@@ -12,26 +12,32 @@ const stack = ['Gemini', 'OpenAI', 'Claude', 'Google Cloud', 'Gmail API', 'Verce
 
 const services = [
   {
+    id: 'ai-consulting',
+    title: 'AI Consulting & Scoping',
+    copy: 'Where is AI actually worth it? We audit, test on your data, and answer honestly.',
+    visual: <ConsultingVisual />,
+  },
+  {
+    id: 'custom-ai-development',
+    title: 'Custom AI Development',
+    copy: 'Bespoke AI systems built end-to-end — pipeline, interface, and review mechanics.',
+    visual: <BuildVisual />,
+  },
+  {
     id: 'workflow-automation',
-    title: 'AI Workflow Automation',
-    copy: 'Messages become reviewable task flows — nothing disappears into a thread.',
+    title: 'Workflow Automation',
+    copy: 'Repetitive processes automated with AI — every step stays reviewable.',
     visual: <WorkflowVisual />,
   },
   {
-    id: 'document-intelligence',
-    title: 'Knowledge & Document Intelligence',
-    copy: 'AI reads your files, organises them, and answers with sources attached.',
-    visual: <DocumentsVisual />,
-  },
-  {
-    id: 'research-intelligence',
-    title: 'Research & Content Intelligence',
-    copy: 'Web and video research distilled into clean, translated, usable material.',
-    visual: <ResearchVisual />,
+    id: 'ai-integration',
+    title: 'AI Integration',
+    copy: 'AI wired into your existing product or tools — no rewrite, no lock-in.',
+    visual: <IntegrationVisual />,
   },
   {
     id: 'ai-assistants',
-    title: 'Custom AI Assistants',
+    title: 'AI Assistants',
     copy: 'Support bots grounded in your knowledge — with human handoff built in.',
     visual: <AssistantVisual />,
   },
@@ -170,7 +176,7 @@ export function HomeScrollStory() {
               Proof of approach, not the boundary of it — if the problem involves AI, we can scope it.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((item) => (
               <Link key={item.id} href={`/services/${item.id}`} className="group grid content-start gap-4" data-reveal>
                 <div>
@@ -183,6 +189,20 @@ export function HomeScrollStory() {
                 {item.visual}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="group grid content-center gap-3 rounded-[22px] border border-dashed border-[#c9cfe4] bg-white/60 p-7 text-center transition-colors hover:border-[#5f6ec7]"
+              data-reveal
+            >
+              <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#12162e]">Something else?</h3>
+              <p className="text-sm leading-6 text-[#4e5573]">
+                If it involves AI, we can scope it. The list above is proof, not the boundary.
+              </p>
+              <span className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#5f6ec7]">
+                Bring us your problem
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>

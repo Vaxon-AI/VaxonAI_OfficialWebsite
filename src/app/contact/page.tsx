@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 }
 
 const projectTypes = [
-  ['An AI project', 'Anything AI-shaped — automation, extraction, generation, integration, vision, voice, or a problem without a name yet. Describe the workflow, not the technology.'],
-  ['Our products', 'Questions, feedback, or access around EmailFlow and the rest of the lineup.'],
-  ['Partnership & everything else', 'Collaborations, media, or an idea that does not fit a box. Those are often the interesting ones.'],
+  ['Start a project', 'You have a workflow, a problem, or an idea that involves AI. Describe it in plain words — we scope honestly, and say no when AI is not the answer.'],
+  ['Partnership', 'Collaborations, integrations, referrals, or building something together.'],
+  ['Careers', 'You want to help build Vaxon. Tell us what you are good at and what you want to work on.'],
+  ['Something else', 'Media, product questions, feedback, or anything that does not fit a box.'],
 ]
 
 export default function ContactPage() {

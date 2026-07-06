@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
-import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from '@/components/service-visuals'
+import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
 import { services as serviceData } from '@/lib/services'
 import { absoluteUrl } from '@/lib/site'
 
@@ -15,9 +15,10 @@ export const metadata: Metadata = {
 }
 
 const visuals: Record<string, React.ReactNode> = {
+  'ai-consulting': <ConsultingVisual />,
+  'custom-ai-development': <BuildVisual />,
   'workflow-automation': <WorkflowVisual />,
-  'document-intelligence': <DocumentsVisual />,
-  'research-intelligence': <ResearchVisual />,
+  'ai-integration': <IntegrationVisual />,
   'ai-assistants': <AssistantVisual />,
 }
 

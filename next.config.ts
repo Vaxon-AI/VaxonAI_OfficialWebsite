@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      // Old product-mirroring service pages -> their product counterparts
+      {
+        source: '/services/document-intelligence',
+        destination: '/products/document-intelligence',
+        permanent: true,
+      },
+      {
+        source: '/services/research-intelligence',
+        destination: '/products/research-intelligence',
+        permanent: true,
+      },
     ]
   },
 }

@@ -4,14 +4,15 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Check } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
 import { JsonLd } from '@/components/json-ld'
-import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from '@/components/service-visuals'
+import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
 import { getService, services } from '@/lib/services'
 import { absoluteUrl } from '@/lib/site'
 
 const visuals: Record<string, React.ReactNode> = {
+  'ai-consulting': <ConsultingVisual />,
+  'custom-ai-development': <BuildVisual />,
   'workflow-automation': <WorkflowVisual />,
-  'document-intelligence': <DocumentsVisual />,
-  'research-intelligence': <ResearchVisual />,
+  'ai-integration': <IntegrationVisual />,
   'ai-assistants': <AssistantVisual />,
 }
 

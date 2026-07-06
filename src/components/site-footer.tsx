@@ -14,7 +14,7 @@ const footerGroups = [
   },
   {
     title: 'Products',
-    links: [...productLinks, { href: '/products', label: 'All products' }],
+    links: productLinks,
   },
   {
     title: 'Get in touch',

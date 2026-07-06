@@ -11,6 +11,14 @@ import {
   Languages,
   MessageCircle,
   ArrowDown,
+  ClipboardList,
+  Map,
+  Hammer,
+  Gauge,
+  Rocket,
+  Plug,
+  AppWindow,
+  Wand2,
 } from 'lucide-react'
 
 // Code-drawn animated explainers — one small diagram per service.
@@ -92,6 +100,72 @@ export function ResearchVisual() {
         <span className="viz-icon"><Languages className="h-4 w-4" /></span>
         Rewritten as clean prose · translated
         <span className="viz-chip">EN ⇄ 中文</span>
+      </div>
+    </div>
+  )
+}
+
+export function ConsultingVisual() {
+  return (
+    <div className="viz-panel" aria-hidden="true">
+      <div className="viz-row" style={stagger(0)}>
+        <span className="viz-icon"><ClipboardList className="h-4 w-4" /></span>
+        Workflow audit — where time actually goes
+        <span className="viz-chip">Week 1</span>
+      </div>
+      <div className="viz-row" style={stagger(1)}>
+        <span className="viz-icon"><Search className="h-4 w-4" /></span>
+        Feasibility check — honest no&apos;s included
+        <span className="viz-chip">Evidence-based</span>
+      </div>
+      <div className="viz-row" style={stagger(2)}>
+        <span className="viz-icon"><Map className="h-4 w-4" /></span>
+        Roadmap: PoC → Pilot → Production
+        <span className="viz-chip">Scoped &amp; costed</span>
+      </div>
+    </div>
+  )
+}
+
+export function BuildVisual() {
+  return (
+    <div className="viz-panel" aria-hidden="true">
+      <div className="viz-row" style={stagger(0)}>
+        <span className="viz-icon"><Hammer className="h-4 w-4" /></span>
+        Built end-to-end — pipeline to interface
+        <span className="viz-chip">Full-stack</span>
+      </div>
+      <div className="viz-row" style={stagger(1)}>
+        <span className="viz-icon"><Gauge className="h-4 w-4" /></span>
+        Evaluated on your data, not benchmarks
+        <span className="viz-chip">Measured</span>
+      </div>
+      <div className="viz-row" style={stagger(2)}>
+        <span className="viz-icon"><Rocket className="h-4 w-4" /></span>
+        Hardened, documented, handed over
+        <span className="viz-chip">Production</span>
+      </div>
+    </div>
+  )
+}
+
+export function IntegrationVisual() {
+  return (
+    <div className="viz-panel" aria-hidden="true">
+      <div className="viz-row" style={stagger(0)}>
+        <span className="viz-icon"><AppWindow className="h-4 w-4" /></span>
+        Your existing product or tools
+        <span className="viz-chip">No rewrite</span>
+      </div>
+      <div className="viz-row" style={stagger(1)}>
+        <span className="viz-icon"><Plug className="h-4 w-4" /></span>
+        AI layer wired in — APIs, models, guardrails
+        <span className="viz-chip">Behind the scenes</span>
+      </div>
+      <div className="viz-row" style={stagger(2)}>
+        <span className="viz-icon"><Wand2 className="h-4 w-4" /></span>
+        New capability, same workflow
+        <span className="viz-chip">Live</span>
       </div>
     </div>
   )

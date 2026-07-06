@@ -5,9 +5,10 @@ import { absoluteUrl } from '@/lib/site'
 const routes = [
   '/',
   '/services',
+  '/services/ai-consulting',
+  '/services/custom-ai-development',
   '/services/workflow-automation',
-  '/services/document-intelligence',
-  '/services/research-intelligence',
+  '/services/ai-integration',
   '/services/ai-assistants',
   '/products',
   '/products/emailflow',

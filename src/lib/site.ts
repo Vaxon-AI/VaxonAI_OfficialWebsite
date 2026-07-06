@@ -13,9 +13,10 @@ export const productLinks = [
 ]
 
 export const serviceLinks = [
+  { href: '/services/ai-consulting', label: 'Consulting & Scoping' },
+  { href: '/services/custom-ai-development', label: 'Custom Development' },
   { href: '/services/workflow-automation', label: 'Workflow Automation' },
-  { href: '/services/document-intelligence', label: 'Document Intelligence' },
-  { href: '/services/research-intelligence', label: 'Research & Content' },
+  { href: '/services/ai-integration', label: 'AI Integration' },
   { href: '/services/ai-assistants', label: 'AI Assistants' },
 ]
 
@@ -28,7 +29,7 @@ export type NavItem = {
 export const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services', children: serviceLinks },
-  { href: '/products', label: 'Products', children: [...productLinks, { href: '/products', label: 'All products' }] },
+  { href: '/products', label: 'Products', children: productLinks },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
