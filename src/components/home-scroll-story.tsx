@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AssistantVisual, BuildVisual, ConsultingVisual, IntegrationVisual, WorkflowVisual } from '@/components/service-visuals'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
@@ -101,8 +101,65 @@ function useTypewriter(words: string[]) {
   return text
 }
 
+// Cursor-following spotlight: lerped via rAF so the glow trails the
+// pointer with inertia. Desktop pointers only; reduced-motion opts out.
+function useSpotlight() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const glow = glowRef.current
+    if (!section || !glow) return
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let targetX = 0
+    let targetY = 0
+    let x = 0
+    let y = 0
+    let raf = 0
+    let running = false
+
+    const loop = () => {
+      x += (targetX - x) * 0.08
+      y += (targetY - y) * 0.08
+      glow.style.transform = `translate3d(${x - 130}px, ${y - 130}px, 0)`
+      raf = requestAnimationFrame(loop)
+    }
+
+    const handleMove = (event: MouseEvent) => {
+      const rect = section.getBoundingClientRect()
+      targetX = event.clientX - rect.left
+      targetY = event.clientY - rect.top
+      if (!running) {
+        running = true
+        x = targetX
+        y = targetY
+        loop()
+      }
+      glow.style.opacity = '0.34'
+    }
+
+    const handleLeave = () => {
+      glow.style.opacity = '0'
+    }
+
+    section.addEventListener('mousemove', handleMove)
+    section.addEventListener('mouseleave', handleLeave)
+    return () => {
+      cancelAnimationFrame(raf)
+      section.removeEventListener('mousemove', handleMove)
+      section.removeEventListener('mouseleave', handleLeave)
+    }
+  }, [])
+
+  return { sectionRef, glowRef }
+}
+
 export function HomeScrollStory() {
   const text = useTypewriter(heroWords)
+  const { sectionRef, glowRef } = useSpotlight()
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
@@ -123,9 +180,10 @@ export function HomeScrollStory() {
 
   return (
     <>
-      {/* 1 — Hero: centred type + drifting background glow */}
-      <section className="dark-band relative overflow-hidden">
+      {/* 1 — Hero: centred type + drifting glow + cursor spotlight */}
+      <section ref={sectionRef} className="dark-band relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-px bg-[#c7cfec]/10" />
+        <div ref={glowRef} aria-hidden="true" className="hero-spotlight" />
         <div
           aria-hidden="true"
           className="hero-glow"
