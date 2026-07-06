@@ -1,29 +1,30 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Link2, Mail, TrendingUp, UserCheck } from 'lucide-react'
 import { CtaBand } from '@/components/cta-band'
-import { EmailFlowDashboardPreview } from '@/components/product-system-preview'
+import { EmailFlowIllustration, TaxAwareIllustration, taxAwareChips } from '@/components/product-illustrations'
 import { JsonLd } from '@/components/json-ld'
 import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Our Products',
   description:
-    'Vaxon ships its own AI products — EmailFlow, Document Intelligence, and Research Intelligence — as proof of the systems we build for clients.',
+    'Vaxon ships its own AI products — EmailFlow, Document Intelligence, Research Intelligence, and Tax Aware — as proof of the systems we build for clients.',
   alternates: { canonical: absoluteUrl('/products') },
 }
 
-const emailflowCallouts = [
-  'Email classification',
-  'AI suggestions pending review',
-  'Source-linked task context',
+const emailflowTags = [
+  { icon: Mail, label: 'Email-to-task' },
+  { icon: TrendingUp, label: 'Priority signals' },
+  { icon: UserCheck, label: 'Human review' },
+  { icon: Link2, label: 'Source context' },
 ]
 
 const caseStudies = [
   {
     id: 'document-intelligence',
     name: 'Document Intelligence',
-    status: 'In development',
+    status: 'Shipped',
     headline: 'A knowledge base that reads your files and cites its sources.',
     copy: 'Built for internal document management: AI ingests PDFs, Word files, and images, tags and classifies them into a searchable store. Teams query in plain language and get summaries with the source documents cited — never an unsourced answer.',
     mechanisms: [
@@ -36,7 +37,7 @@ const caseStudies = [
   {
     id: 'research-intelligence',
     name: 'Research Intelligence',
-    status: 'In development',
+    status: 'Shipped',
     headline: 'Web and video research, distilled into usable material.',
     copy: 'A research assistant that searches and summarises web content, and handles video too: subtitles are extracted, rewritten into clean written prose, and translated — turning hours of viewing into minutes of reading.',
     mechanisms: [
@@ -88,9 +89,14 @@ export default function ProductsPage() {
             <p className="mt-5 text-base leading-8 text-[#4e5573]">
               EmailFlow is built for people managing multiple projects, inbox-driven decisions, and follow-ups that should not disappear into a thread.
             </p>
-            <p className="mt-7 max-w-md pt-5 text-sm font-semibold leading-7 text-[#12162e]">
-              Active product · Email-to-task · Source-linked workflow
-            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {emailflowTags.map(({ icon: Icon, label }) => (
+                <span key={label} className="marquee-chip">
+                  <Icon className="h-3.5 w-3.5 text-[#5f6ec7]" />
+                  {label}
+                </span>
+              ))}
+            </div>
             <div className="mt-8 flex flex-wrap gap-5">
               <a
                 href="https://emailflow.vaxon.org/"
@@ -107,14 +113,7 @@ export default function ProductsPage() {
               </Link>
             </div>
           </article>
-          <div>
-            <EmailFlowDashboardPreview compact />
-            <div className="mt-4 flex flex-wrap gap-3">
-              {emailflowCallouts.map((label) => (
-                <span key={label} className="callout-chip">{label}</span>
-              ))}
-            </div>
-          </div>
+          <EmailFlowIllustration />
         </div>
       </section>
 
@@ -122,7 +121,7 @@ export default function ProductsPage() {
       <section className="paper-band py-16 md:py-24">
         <div className="shell">
           <div className="max-w-3xl">
-            <p className="page-kicker">Case studies</p>
+            <p className="page-kicker">More from the lineup</p>
             <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-4xl">
               Built by the same team, on the same principles.
             </h2>
@@ -157,6 +156,31 @@ export default function ProductsPage() {
                 </div>
               </article>
             ))}
+
+            {/* Tax Aware — in development */}
+            <article id="tax-aware" className="scroll-mt-28 grid gap-8 rounded-[28px] border border-[#dfe2ee] bg-white p-8 md:grid-cols-[1fr_0.9fr] md:items-center md:p-12">
+              <div>
+                <div className="flex items-center gap-4">
+                  <p className="text-base font-semibold text-[#12162e]">Tax Aware</p>
+                  <span className="status-chip">In development</span>
+                </div>
+                <h3 className="mt-5 text-2xl font-semibold leading-tight tracking-[-0.035em] text-[#12162e] md:text-3xl">
+                  Turn everyday expenses into tax-ready records.
+                </h3>
+                <p className="mt-5 text-base leading-8 text-[#4e5573]">
+                  Tax Aware helps people manage their own tax with less pain: capture receipts as they happen, add tax context automatically, and prepare evidence-backed summaries ready for EOFY review.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  {taxAwareChips.map(({ icon: Icon, label }) => (
+                    <span key={label} className="marquee-chip">
+                      <Icon className="h-3.5 w-3.5 text-[#5f6ec7]" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <TaxAwareIllustration />
+            </article>
           </div>
         </div>
       </section>

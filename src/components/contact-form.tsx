@@ -3,14 +3,7 @@
 import { useState } from 'react'
 import { Send } from 'lucide-react'
 
-const intents = [
-  'Workflow automation',
-  'Knowledge base & documents',
-  'Research & content AI',
-  'AI assistant or chatbot',
-  'Other AI project',
-  'Partnership',
-]
+const intents = ['AI project', 'Products', 'Partnership', 'Other']
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -63,7 +56,7 @@ export function ContactForm() {
         </label>
         <label className="grid gap-2 text-sm font-semibold text-[#12162e]">
           Intent
-          <select name="intent" required defaultValue="Workflow automation" className="rounded-xl border border-[#e2e2e7] bg-white px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]">
+          <select name="intent" required defaultValue="AI project" className="rounded-xl border border-[#e2e2e7] bg-white px-4 py-3 text-sm font-normal outline-none transition focus:border-[#5f6ec7]">
             {intents.map((intent) => (
               <option key={intent} value={intent}>{intent}</option>
             ))}

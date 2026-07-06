@@ -7,10 +7,10 @@ import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from
 import { absoluteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'What We Do',
+  title: 'Services',
   description:
     'We take on AI projects of any shape — automation, document intelligence, research pipelines, assistants, and problems that do not have a name yet. All human-in-the-loop.',
-  alternates: { canonical: absoluteUrl('/what-we-do') },
+  alternates: { canonical: absoluteUrl('/services') },
 }
 
 const services = [
@@ -72,7 +72,7 @@ export default function WhatWeDoPage() {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
-            { '@type': 'ListItem', position: 2, name: 'What We Do', item: absoluteUrl('/what-we-do') },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: absoluteUrl('/services') },
           ],
         }}
       />
@@ -80,7 +80,7 @@ export default function WhatWeDoPage() {
       <section className="page-hero">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="page-kicker">What We Do</p>
+            <p className="page-kicker">Services</p>
             <h1 className="page-title">Custom AI systems, built around your workflow.</h1>
           </div>
           <div>

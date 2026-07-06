@@ -1,30 +1,26 @@
 import Link from 'next/link'
 import { BrandMark } from '@/components/brand-mark'
+import { productLinks, site } from '@/lib/site'
 
 const footerGroups = [
   {
     title: 'Company',
     links: [
       { href: '/about', label: 'About' },
-      { href: '/careers', label: 'Careers' },
+      { href: '/services', label: 'Services' },
       { href: '/blog', label: 'Blog' },
-      { href: '/contact', label: 'Contact' },
-    ],
-  },
-  {
-    title: 'What We Do',
-    links: [
-      { href: '/what-we-do#workflow-automation', label: 'AI Workflow Automation' },
-      { href: '/what-we-do#document-intelligence', label: 'Knowledge & Document Intelligence' },
-      { href: '/what-we-do#research-intelligence', label: 'Research & Content Intelligence' },
-      { href: '/what-we-do#ai-assistants', label: 'Custom AI Assistants' },
+      { href: '/careers', label: 'Careers' },
     ],
   },
   {
     title: 'Products',
+    links: [...productLinks, { href: '/products', label: 'All products' }],
+  },
+  {
+    title: 'Get in touch',
     links: [
-      { href: '/products/emailflow', label: 'EmailFlow' },
-      { href: '/products', label: 'Our products' },
+      { href: '/contact', label: 'Talk to us' },
+      { href: `mailto:${site.email}`, label: site.email },
     ],
   },
 ]
@@ -36,11 +32,9 @@ export function SiteFooter() {
         <div>
           <BrandMark compact />
           <p className="mt-3 max-w-xs text-xs leading-5 text-[#4e5573]">
-            Human-in-the-loop AI systems for real work. We build custom AI workflows for businesses — and ship our own products to prove they work.
+            Human-in-the-loop AI systems for real work. If the problem involves AI, we can scope it — our own products are the proof.
           </p>
-          <Link href="/contact" className="mt-3 inline-flex text-xs font-semibold text-[#5f6ec7]">
-            Talk to us
-          </Link>
+          <p className="mt-3 text-xs text-[#8c96c8]">Australia · working worldwide</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-3">
           {footerGroups.map((group) => (
@@ -48,7 +42,7 @@ export function SiteFooter() {
               <p className="text-xs font-semibold text-[#12162e]">{group.title}</p>
               <div className="mt-3 grid gap-2 text-xs text-[#4e5573]">
                 {group.links.map((item) => (
-                  <Link key={item.href} href={item.href} className="hover:text-[#12162e]">
+                  <Link key={`${item.href}-${item.label}`} href={item.href} className="hover:text-[#12162e]">
                     {item.label}
                   </Link>
                 ))}
@@ -57,8 +51,9 @@ export function SiteFooter() {
           ))}
         </div>
       </div>
-      <div className="shell border-t border-[#eceef5] py-4 text-xs text-[#4e5573]">
-        &copy; {new Date().getFullYear()} Vaxon. All rights reserved.
+      <div className="shell flex flex-wrap items-center justify-between gap-3 border-t border-[#eceef5] py-4 text-xs text-[#4e5573]">
+        <span>&copy; {new Date().getFullYear()} Vaxon. All rights reserved.</span>
+        <span className="text-[#8c96c8]">No hidden AI actions — human review by design.</span>
       </div>
     </footer>
   )

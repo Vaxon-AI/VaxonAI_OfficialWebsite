@@ -10,11 +10,9 @@ export const metadata: Metadata = {
 }
 
 const projectTypes = [
-  ['Workflow automation', 'Email- and message-driven work that should become structured, reviewable task flows.'],
-  ['Knowledge base & documents', 'Internal files — PDFs, Word, images — that need AI classification, search, and sourced answers.'],
-  ['Research & content AI', 'Web research, summarisation, video-to-text, and translation pipelines.'],
-  ['AI assistant or chatbot', 'Customer-facing or internal assistants grounded in your knowledge, with human handoff.'],
-  ['Anything else AI-shaped', 'Automation, extraction, generation, integration, vision, voice — or a problem without a name yet. Those are often the interesting ones.'],
+  ['An AI project', 'Anything AI-shaped — automation, extraction, generation, integration, vision, voice, or a problem without a name yet. Describe the workflow, not the technology.'],
+  ['Our products', 'Questions, feedback, or access around EmailFlow and the rest of the lineup.'],
+  ['Partnership & everything else', 'Collaborations, media, or an idea that does not fit a box. Those are often the interesting ones.'],
 ]
 
 export default function ContactPage() {

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { AssistantVisual, DocumentsVisual, ResearchVisual, WorkflowVisual } from '@/components/service-visuals'
+import { EmailFlowIllustration } from '@/components/product-illustrations'
 
 const heroWords = ['team', 'inbox', 'documents', 'research', 'support']
 
@@ -45,11 +46,10 @@ const principles = [
 
 function useTypewriter(words: string[]) {
   const [text, setText] = useState(words[0])
-  const [reduced, setReduced] = useState(false)
 
   useEffect(() => {
+    // Reduced motion: keep the static first word; CSS hides the caret.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setReduced(true)
       return
     }
 
@@ -84,11 +84,11 @@ function useTypewriter(words: string[]) {
     return () => clearTimeout(timer)
   }, [words])
 
-  return { text, reduced }
+  return text
 }
 
 export function HomeScrollStory() {
-  const { text, reduced } = useTypewriter(heroWords)
+  const text = useTypewriter(heroWords)
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
@@ -118,8 +118,8 @@ export function HomeScrollStory() {
             <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-0.045em] md:text-5xl">
               AI that works the way your{' '}
               <span className="text-[#c7cfec]">
-                {reduced ? 'team' : text}
-                {!reduced && <span className="type-caret" />}
+                {text}
+                <span className="type-caret" />
               </span>{' '}
               works.
             </h1>
@@ -138,14 +138,7 @@ export function HomeScrollStory() {
             </div>
           </div>
 
-          <div className="workstream" aria-hidden="true">
-            {['Work arrives', 'AI structures it', 'People review', 'Action ships'].map((item, index) => (
-              <div key={item} className="workstream-row" style={{ animationDelay: `${index * 180}ms` }}>
-                <span className="text-base">{item}</span>
-                <i />
-              </div>
-            ))}
-          </div>
+          <EmailFlowIllustration />
         </div>
       </section>
 
@@ -179,7 +172,7 @@ export function HomeScrollStory() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {services.map((item) => (
-              <Link key={item.id} href={`/what-we-do#${item.id}`} className="group grid content-start gap-4" data-reveal>
+              <Link key={item.id} href={`/services#${item.id}`} className="group grid content-start gap-4" data-reveal>
                 <div>
                   <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#12162e] transition-colors group-hover:text-[#5f6ec7]">
                     {item.title}
@@ -224,11 +217,12 @@ export function HomeScrollStory() {
               We ship our own products.
             </h2>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/products/emailflow', name: 'EmailFlow', status: 'Active product', copy: 'Inbox messages become reviewable tasks with priority and source context.', cta: 'Explore EmailFlow' },
-              { href: '/products#document-intelligence', name: 'Document Intelligence', status: 'In development', copy: 'AI file classification and retrieval — every answer cites its source.', cta: 'View case study' },
-              { href: '/products#research-intelligence', name: 'Research Intelligence', status: 'In development', copy: 'Web and video research distilled into clean, citable notes.', cta: 'View case study' },
+              { href: '/products#document-intelligence', name: 'Document Intelligence', status: 'Shipped', copy: 'AI file classification and retrieval — every answer cites its source.', cta: 'View case study' },
+              { href: '/products#research-intelligence', name: 'Research Intelligence', status: 'Shipped', copy: 'Web and video research distilled into clean, citable notes.', cta: 'View case study' },
+              { href: '/products#tax-aware', name: 'Tax Aware', status: 'In development', copy: 'Everyday expenses become tax-ready records with evidence attached.', cta: 'Learn about Tax Aware' },
             ].map((product) => (
               <Link
                 key={product.name}
