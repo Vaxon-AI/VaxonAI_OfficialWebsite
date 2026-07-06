@@ -28,7 +28,7 @@ export default function CareersPage() {
 
       <section className="bg-white py-16 md:py-24">
         <div className="shell grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-          <h2 className="max-w-lg text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-6xl">
+          <h2 className="max-w-lg text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-4xl">
             What we value.
           </h2>
           <div className="plain-line-list">
@@ -45,7 +45,7 @@ export default function CareersPage() {
       <section className="bg-[#0b0e2a] py-16 text-white md:py-24">
         <div className="shell grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
           <div>
-            <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
+            <h2 className="max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.045em] md:text-4xl">
               Send what you have built.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-white/64">

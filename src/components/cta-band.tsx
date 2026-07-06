@@ -6,7 +6,7 @@ export function CtaBand() {
     <section className="dark-band">
       <div className="shell grid gap-8 py-16 md:grid-cols-[1fr_auto] md:items-center md:py-20">
         <div>
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.035em] md:text-5xl">
+          <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.035em] md:text-4xl">
             Have a workflow that AI should be handling?
           </h2>
           <p className="mt-5 max-w-xl text-base leading-8 text-white/66">

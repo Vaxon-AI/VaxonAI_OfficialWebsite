@@ -61,7 +61,7 @@ export default function AboutPage() {
 
       <section className="paper-band py-16 md:py-24">
         <div className="shell">
-          <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-6xl">
+          <h2 className="max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-4xl">
             Four principles behind everything we build.
           </h2>
           <div className="mt-14 border-t border-[#dfe2ee]">
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <div className="shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
             <p className="page-kicker">The team</p>
-            <h2 className="mt-5 max-w-xl text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-6xl">
+            <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.045em] md:text-4xl">
               A small team that ships.
             </h2>
             <p className="mt-6 max-w-md text-lg leading-8 text-white/70">
@@ -104,7 +104,7 @@ export default function AboutPage() {
       <section className="bg-white py-16 md:py-24">
         <div className="shell grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.035em] text-[#12162e] md:text-5xl">
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.035em] text-[#12162e] md:text-4xl">
               See how we put these principles to work.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-8 text-[#4e5573]">

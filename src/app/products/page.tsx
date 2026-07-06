@@ -123,7 +123,7 @@ export default function ProductsPage() {
         <div className="shell">
           <div className="max-w-3xl">
             <p className="page-kicker">Case studies</p>
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-5xl">
+            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#12162e] md:text-4xl">
               Built by the same team, on the same principles.
             </h2>
           </div>
