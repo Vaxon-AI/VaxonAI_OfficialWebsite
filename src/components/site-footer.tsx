@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { BrandMark } from '@/components/brand-mark'
-import { productLinks, site } from '@/lib/site'
+import { productLinks } from '@/lib/site'
 
 const footerGroups = [
   {
@@ -18,10 +18,7 @@ const footerGroups = [
   },
   {
     title: 'Get in touch',
-    links: [
-      { href: '/contact', label: 'Talk to us' },
-      { href: `mailto:${site.email}`, label: site.email },
-    ],
+    links: [{ href: '/contact', label: 'Talk to us' }],
   },
 ]
 
