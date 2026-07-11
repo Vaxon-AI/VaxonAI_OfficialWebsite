@@ -18,6 +18,7 @@ const routes = [
   '/blog',
   '/careers',
   '/contact',
+  '/privacy-policy',
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

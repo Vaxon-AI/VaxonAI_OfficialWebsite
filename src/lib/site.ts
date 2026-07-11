@@ -1,9 +1,9 @@
 export const site = {
   name: 'Vaxon',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vaxon.ai',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vaxon.org',
   description:
     'Vaxon designs human-in-the-loop AI systems for real work — custom AI workflows for businesses, proven by our own products.',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'vaxon.ai@outlook.com',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'support@vaxon.org',
 }
 
 export const productLinks = [
